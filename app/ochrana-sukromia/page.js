@@ -1,0 +1,59 @@
+export const metadata = {
+      title: 'Ochrana sukromia | InBar Magazine',
+        description: 'Zasady ochrany osobnych udajov InBar Magazine.',
+        };
+
+        export default function OchranaSukromiaPage() {
+          return (
+              <main className="page-content">
+                    <div className="container">
+                            <div className="page-header">
+                                      <h1>Ochrana sukromia</h1>
+                                                <div className="page-header-line" />
+                                                        </div>
+
+                                                                <div className="page-body">
+                                                                          <p className="page-lead">
+                                                                                      Vase sukromie je pre nas dolezite. Tato stranka vysvetluje, ake osobne udaje zbierame,
+                                                                                                  ako ich pouzivame a ake mate prava.
+                                                                                                            </p>
+
+                                                                                                                      <h2>Prevadzkovatel</h2>
+                                                                                                                                <p>
+                                                                                                                                            Prevadzkovatelom webovej stranky inbar.sk je spolocnost InBar &amp; Restaurant s.r.o.
+                                                                                                                                                        Kontakt: <a href="mailto:info@inbar.sk">info@inbar.sk</a>
+                                                                                                                                                                  </p>
+
+                                                                                                                                                                            <h2>Ake udaje zbierame</h2>
+                                                                                                                                                                                      <p>
+                                                                                                                                                                                                  Pri navsteve tejto webovej stranky mozeme automaticky zaznamenavat technicke informacie
+                                                                                                                                                                                                              ako IP adresa, typ prehliadaca, navstivene stranky a cas navstevy.
+                                                                                                                                                                                                                        </p>
+                                                                                                                                                                                                                                  <p>
+                                                                                                                                                                                                                                              Ak nam dobrovolne zanechate kontaktne udaje, budu pouzite vylucne na ucel, na ktory ste ich poskytli.
+                                                                                                                                                                                                                                                        </p>
+
+                                                                                                                                                                                                                                                                  <h2>Cookies</h2>
+                                                                                                                                                                                                                                                                            <p>
+                                                                                                                                                                                                                                                                                        Tato stranka pouziva cookies. Viac informacii najdete v nasich{' '}
+                                                                                                                                                                                                                                                                                                    <a href="/cookies">Zasadach pouzivania cookies</a>.
+                                                                                                                                                                                                                                                                                                              </p>
+
+                                                                                                                                                                                                                                                                                                                        <h2>Vase prava</h2>
+                                                                                                                                                                                                                                                                                                                                  <p>
+                                                                                                                                                                                                                                                                                                                                              Mate pravo na pristup k svojim osobnym udajom, ich opravu, vymazanie a prenosnost.
+                                                                                                                                                                                                                                                                                                                                                          V pripade otazok nas kontaktujte na <a href="mailto:info@inbar.sk">info@inbar.sk</a>.
+                                                                                                                                                                                                                                                                                                                                                                    </p>
+
+                                                                                                                                                                                                                                                                                                                                                                              <h2>Zmeny zasad</h2>
+                                                                                                                                                                                                                                                                                                                                                                                        <p>
+                                                                                                                                                                                                                                                                                                                                                                                                    Tieto zasady mozeme priebezne aktualizovat. Odporucame Vam pravidelne kontrolovat tuto stranku.
+                                                                                                                                                                                                                                                                                                                                                                                                              </p>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                        <p className="page-updated">Posledna aktualizacia: januar 2025</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                          </main>
+                                                                                                                                                                                                                                                                                                                                                                                                                                            );
+                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+}

@@ -1,0 +1,51 @@
+export const metadata = {
+      title: 'Kontakt | InBar Magazine',
+        description: 'Kontaktujte redakciu InBar Magazine.',
+        };
+
+        export default function KontaktPage() {
+          return (
+              <main className="page-content">
+                    <div className="container">
+                            <div className="page-header">
+                                      <h1>Kontakt</h1>
+                                                <div className="page-header-line" />
+                                                        </div>
+
+                                                                <div className="page-body">
+                                                                          <p className="page-lead">
+                                                                                      Mate otazku, tip na clanok alebo zaujem o spolupraci? Napiste nam.
+                                                                                                </p>
+
+                                                                                                          <div className="contact-grid">
+                                                                                                                      <div className="contact-block">
+                                                                                                                                    <h2>Redakcia</h2>
+                                                                                                                                                  <p>
+                                                                                                                                                                  <a href="mailto:info@inbar.sk">info@inbar.sk</a>
+                                                                                                                                                                                </p>
+                                                                                                                                                                                            </div>
+
+                                                                                                                                                                                                        <div className="contact-block">
+                                                                                                                                                                                                                      <h2>Inzercia</h2>
+                                                                                                                                                                                                                                    <p>
+                                                                                                                                                                                                                                                    Pre informacie o reklamnych moznostiach navstivte sekciu{' '}
+                                                                                                                                                                                                                                                                    <a href="/inzercia">Inzercia</a> alebo nam napiste na{' '}
+                                                                                                                                                                                                                                                                                    <a href="mailto:info@inbar.sk">info@inbar.sk</a>.
+                                                                                                                                                                                                                                                                                                  </p>
+                                                                                                                                                                                                                                                                                                              </div>
+
+                                                                                                                                                                                                                                                                                                                          <div className="contact-block">
+                                                                                                                                                                                                                                                                                                                                        <h2>Socialne siete</h2>
+                                                                                                                                                                                                                                                                                                                                                      <p>
+                                                                                                                                                                                                                                                                                                                                                                      <a href="https://instagram.com/inbarsk" target="_blank" rel="noreferrer">Instagram @inbarsk</a>
+                                                                                                                                                                                                                                                                                                                                                                                      <br />
+                                                                                                                                                                                                                                                                                                                                                                                                      <a href="https://facebook.com/inbarsk" target="_blank" rel="noreferrer">Facebook InBar</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                    </p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            </main>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              );
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              }
+}
