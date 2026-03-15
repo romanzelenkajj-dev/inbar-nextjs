@@ -17,21 +17,23 @@ export function CardFull({ post, size = 'main' }) {
     </Link>
   );
 
-// ── Big image card ────────────────────────────────────────────────────────
+// ── Big image card ────────────────────────────────────────────────────────────────────────────
 export function CardBig({ post }) {
   const img = getFeaturedImage(post);
   const cat = getPrimaryCategory(post);
   const color = getCategoryColor(cat?.slug);
   return (
-    <Link href={`/${post.slug}`} className="card-full">
-      <div className="card-full-img">
-        {img ? <img src={img} alt={post.title?.rendered || ''} /> : <div className="card-full-img-placeholder" />}
-      </div>
-      <div className="card-full-body">
-        {cat && <span className={`cat-badge ${color}`}>{cat.name}</span>}
-        <h3 className="card-title-full" dangerouslySetInnerHTML={{ __html: post.title?.rendered }} />
+    <article className="card-big">
+      <Link href={`/${post.slug}`}>
+        <div className="card-big-img">
+          {img ? <img src={img} alt={post.title?.rendered || ''} loading="lazy" /> : <div className="card-big-img" style={{background:'#111'}} />}
         </div>
-    </Link>
+        <div className="card-big-body">
+          {cat && <span className={`card-cat cat-badge ${color}`}>{cat.name}</span>}
+          <h2 className="card-big-title" dangerouslySetInnerHTML={{ __html: post.title?.rendered }} />
+        </div>
+      </Link>
+    </article>
   );
 }
 
