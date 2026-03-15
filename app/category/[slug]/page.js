@@ -1,4 +1,4 @@
-import { getPosts, getCategory, getCategoryColor } from '@/lib/api';
+import { getPosts, getCategory } from '@/lib/api';
 import { CardVertical } from '@/components/ArticleCard';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -21,18 +21,15 @@ export default async function CategoryPage({ params, searchParams }) {
   const page = parseInt(searchParams?.page || '1', 10);
   const { posts, total } = await getPosts({ perPage: 12, page, categoryId: cat.id });
   const totalPages = Math.ceil(total / 12);
-  const color = getCategoryColor(params.slug);
 
   return (
     <>
       <div className="archive-header">
-        <div className="container">
-          <span className={`cat-badge ${color}`} style={{marginBottom:'12px',display:'inline-block'}}>{cat.name}</span>
-          <h1 className="archive-title">{cat.name}</h1>
-          {cat.description && <p className="archive-desc">{cat.description}</p>}
+        <div className="container" style={{textAlign:'center'}}>
+          <h1 className="archive-title" style={{textTransform:'uppercase', textAlign:'center', letterSpacing:'0.08em'}}>{cat.name}</h1>
+          {cat.description && <p className="archive-desc" style={{textAlign:'center'}}>{cat.description}</p>}
         </div>
       </div>
-
       <div className="container">
         {posts.length === 0 ? (
           <p style={{padding:'48px 0', color:'#888'}}>Žiadne články v tejto kategórii.</p>
@@ -41,18 +38,11 @@ export default async function CategoryPage({ params, searchParams }) {
             {posts.map(post => <CardVertical key={post.id} post={post} />)}
           </div>
         )}
-
-        {totalPages > 1 && (
-          <div className="pagination">
-            {page > 1 && (
-              <Link href={`/category/${params.slug}?page=${page - 1}`} className="page-numbers">← Predchádzajúca</Link>
-            )}
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
-              <Link key={p} href={`/category/${params.slug}?page=${p}`} className={`page-numbers${p === page ? ' current' : ''}`}>{p}</Link>
-            ))}
-            {page < totalPages && (
-              <Link href={`/category/${params.slug}?page=${page + 1}`} className="page-numbers">Ďalšia →</Link>
-            )}
+        {page < totalPages && (
+          <div style={{textAlign:'center', padding:'48px 0 32px'}}>
+            <Link href={`/category/${params.slug}?page=${page + 1}`} className="btn-nacitat-viac">
+              Načítať viac
+            </Link>
           </div>
         )}
       </div>
