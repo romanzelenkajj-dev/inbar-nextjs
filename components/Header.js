@@ -17,6 +17,7 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [today, setToday] = useState('');
+    const [logoError, setLogoError] = useState(false);
 
   useEffect(() => {
     setToday(new Date().toLocaleDateString('sk-SK', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }));
@@ -66,7 +67,11 @@ export default function Header() {
 
           <div className="site-logo">
             <Link href="/">
-              <img src="https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png" alt="InBar Magazine" height="52" />
+                          {logoError ? (
+                                        <span className="logo-text-fallback">InBar</span>
+                                                    ) : (
+                                                                  <img src="https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png" alt="InBar Magazine" height="52" onError={() => setLogoError(true)} />
+                                                                              )}
             </Link>
           </div>
 
