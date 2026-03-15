@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState } from 'react';
 import { MAIN_CATEGORIES, NAV_LINKS } from '@/lib/utils';
 import SearchOverlay from './SearchOverlay';
@@ -69,13 +68,13 @@ export default function Header() {
 
             {/* Logo */}
             <Link href="/" className="flex-shrink-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
-              <Image
-                src="https://inbar.sk/app/uploads/2020/01/INBAR-DARK-1-1.png"
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png"
                 alt="InBar Magazine"
                 width={140}
                 height={50}
                 className="h-10 w-auto"
-                priority
               />
             </Link>
 

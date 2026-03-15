@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: 'https://inbar.sk/app/uploads/2020/01/INBAR-DARK-1-1.png',
+        url: 'https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
         width: 600,
         height: 200,
         alt: SITE_NAME,

@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { MAIN_CATEGORIES, FOOTER_LINKS, SITE_DESCRIPTION } from '@/lib/utils';
 
 export default function Footer() {
@@ -9,8 +8,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div>
-            <Image
-              src="https://inbar.sk/app/uploads/2020/01/INBAR-DARK-1-1.png"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png"
               alt="InBar Magazine"
               width={120}
               height={43}

@@ -40,18 +40,18 @@ export default function ArticleCard({
           ) : (
             <div className="w-full h-full bg-dark-card" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/60 to-dark/10" />
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
             {showCategory && firstCategory && (
-              <span className="inline-block text-xs font-medium tracking-widest uppercase text-gold mb-3">
+              <span className="inline-block text-xs font-medium tracking-widest uppercase text-gold mb-3" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
                 {firstCategory.name}
               </span>
             )}
-            <h2 className="text-2xl md:text-4xl font-serif font-bold text-white leading-tight mb-3 group-hover:text-gold transition-colors duration-300">
+            <h2 className="text-2xl md:text-4xl font-serif font-bold text-white leading-tight mb-3 group-hover:text-gold transition-colors duration-300" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
               {title}
             </h2>
             {showExcerpt && (
-              <p className="text-gray-300 text-sm md:text-base max-w-2xl hidden md:block">
+              <p className="text-gray-300 text-sm md:text-base max-w-2xl hidden md:block" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>
                 {excerpt}
               </p>
             )}
