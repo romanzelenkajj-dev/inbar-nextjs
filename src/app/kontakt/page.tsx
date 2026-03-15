@@ -1,0 +1,51 @@
+import { Metadata } from 'next';
+import { SITE_NAME } from '@/lib/utils';
+
+export const metadata: Metadata = {
+  title: `Kontakt | ${SITE_NAME}`,
+  description: 'Kontaktujte redakciu InBar Magazine.',
+};
+
+export default function ContactPage() {
+  return (
+    <div className="max-w-3xl mx-auto px-4 py-12">
+      <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-8">Kontakt</h1>
+
+      <div className="grid gap-8 md:grid-cols-2">
+        <div className="bg-dark-card border border-dark-border rounded-xl p-6">
+          <h3 className="text-lg font-serif font-semibold text-gold mb-4">Redakcia</h3>
+          <div className="space-y-3 text-gray-300 text-sm">
+            <p>
+              <strong className="text-white">Elena Strápková</strong><br />
+              Šéfredaktorka
+            </p>
+            <p>
+              tel.: <a href="tel:+421948372176" className="text-gold hover:text-gold-light transition-colors">+421 948 372 176</a>
+            </p>
+            <p>
+              e-mail:{' '}
+              <a href="mailto:elena.strapkova@propublishing.sk" className="text-gold hover:text-gold-light transition-colors">
+                elena.strapkova@propublishing.sk
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-dark-card border border-dark-border rounded-xl p-6">
+          <h3 className="text-lg font-serif font-semibold text-gold mb-4">Vydavateľ</h3>
+          <div className="space-y-3 text-gray-300 text-sm">
+            <p>
+              <strong className="text-white">PRO PUBLISHING s. r. o.</strong>
+            </p>
+            <p>
+              Landererova 6<br />
+              811 09 Bratislava<br />
+              Slovenská republika
+            </p>
+            <p>IČO: 52233570</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
