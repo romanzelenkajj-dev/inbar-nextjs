@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div>
             <div className="footer-logo">
-              <img src="/logo.png" alt="InBar Magazine" height="44" />
+              <img src="https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png" alt="InBar Magazine" height="44" />
             </div>
             <p className="footer-tagline">Bar &amp; Restaurant Magazine</p>
             <p className="footer-desc">Slovensky magazin o baroch, restauraciach a zivotnom style. Drinking, Dining, Living.</p>
