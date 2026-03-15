@@ -21,6 +21,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
+
           <div>
             <p className="footer-nav-title">Kategorie</p>
             <ul className="footer-nav-list">
@@ -29,12 +30,9 @@ export default function Footer() {
               <li><Link href="/category/living">Living</Link></li>
             </ul>
           </div>
+
           <div>
             <p className="footer-nav-title">Kontakt</p>
-            <div className="footer-contact-person">
-              InBar &amp; Restaurant s.r.o.<br />
-              <a href="mailto:info@inbar.sk">info@inbar.sk</a>
-            </div>
             <ul className="footer-nav-list">
               <li><Link href="/o-nas">O nas</Link></li>
               <li><Link href="/kontakt">Kontakt</Link></li>
@@ -42,6 +40,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+
         <div className="footer-bottom">
           <span>© {year} InBar Magazine. Vsetky prava vyhradene.</span>
           <div className="footer-bottom-links">
