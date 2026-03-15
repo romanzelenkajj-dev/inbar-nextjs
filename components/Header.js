@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const NAV_LEFT = [
   { label: 'Drinking', href: '/category/drinking' },
@@ -67,8 +66,7 @@ export default function Header() {
 
           <div className="site-logo">
             <Link href="/">
-              <img src="/logo.png" alt="InBar Magazine" height="58" onError={(e) => { e.target.style.display='none'; e.target.nextSibling.style.display='block'; }} />
-              <span style={{display:'none', color:'white', fontFamily:'var(--serif)', fontSize:'22px', fontWeight:'700', letterSpacing:'.08em'}}>InBar</span>
+              <img src="https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png" alt="InBar Magazine" height="52" />
             </Link>
           </div>
 
@@ -80,7 +78,7 @@ export default function Header() {
                 </li>
               ))}
             </ul>
-            <button className="search-btn" onClick={() => setSearchOpen(true)} aria-label="Hľadať">
+            <button className="search-btn" onClick={() => setSearchOpen(true)} aria-label="Hladaj">
               <svg viewBox="0 0 24 24" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </button>
           </div>
@@ -92,7 +90,7 @@ export default function Header() {
         <div className="search-overlay-inner">
           <button className="search-overlay-close" onClick={() => setSearchOpen(false)}>×</button>
           <form onSubmit={handleSearch}>
-            <input type="search" placeholder="Hľadať článok…" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} autoFocus={searchOpen} />
+            <input type="search" placeholder="Hladat clanok..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} autoFocus={searchOpen} />
             <button type="submit">
               <svg viewBox="0 0 24 24" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </button>
