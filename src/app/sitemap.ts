@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { EXCLUDED_SLUGS } from '@/lib/wordpress';
 
 const SITE_URL = 'https://inbar-nextjs.vercel.app';
 const WP_API = 'https://inbar.sk/wp-json/wp/v2';
@@ -47,7 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/cookies`, changeFrequency: 'yearly' as const, priority: 0.3 },
   ];
 
-  const postPages = posts.map((post) => ({
+  const postPages = posts.filter((post) => !EXCLUDED_SLUGS.includes(post.slug)).map((post) => ({
     url: `${SITE_URL}/${post.slug}`,
     lastModified: new Date(post.modified),
     changeFrequency: 'weekly' as const,
