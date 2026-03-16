@@ -136,7 +136,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         <div className="flex flex-wrap gap-2 mb-10 pb-6 border-b border-gray-200">
           <Link
             href={`/category/${params.slug}`}
-            className={`px-4 py-2 text-sm rounded-full transition-colors ${
+            className={`px-4 py-2 text-sm uppercase rounded-full transition-colors ${
               !activeSubSlug
                 ? 'bg-gold text-dark font-semibold'
                 : 'bg-white text-gray-600 hover:text-gold border border-gray-200'
@@ -148,7 +148,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             <Link
               key={sub.slug}
               href={`/category/${params.slug}?sub=${sub.slug}`}
-              className={`px-4 py-2 text-sm rounded-full transition-colors ${
+              className={`px-4 py-2 text-sm uppercase rounded-full transition-colors ${
                 activeSubSlug === sub.slug
                   ? 'bg-gold text-dark font-semibold'
                   : 'bg-white text-gray-600 hover:text-gold border border-gray-200'
