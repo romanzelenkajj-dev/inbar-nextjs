@@ -10,14 +10,13 @@ import {
   EXCLUDED_SLUGS,
 } from '@/lib/wordpress';
 import { SITE_NAME } from '@/lib/utils';
-import ArticleCard from '@/components/ArticleCard';
-import Pagination from '@/components/Pagination';
-import { WPPost, WPCategory } from '@/lib/types';
+import CategoryArticleGrid from '@/components/CategoryArticleGrid';
+import { WPPost } from '@/lib/types';
 import { PaginatedPosts } from '@/lib/types';
 
 interface CategoryPageProps {
   params: { slug: string };
-  searchParams: { page?: string; sub?: string };
+  searchParams: { sub?: string };
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
@@ -58,7 +57,6 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   const category = await getCategoryBySlug(params.slug);
   if (!category) notFound();
 
-  const page = parseInt(searchParams.page || '1', 10);
   const subCategorySlug = searchParams.sub;
   const childCategories = await getChildCategories(category.id);
 
@@ -88,7 +86,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     if (isLiving && subCategorySlug === 'lifestyle') {
       // Fetch from both DIZAJN (49) and ETIKETA (41)
       activeSubSlug = 'lifestyle';
-      postsResult = await getPostsFromMultipleCategories([49, 41], page, 12);
+      postsResult = await getPostsFromMultipleCategories([49, 41], 1, 12);
     } else {
       const allCategories = await getCategories();
       const subCat = allCategories.find(
@@ -98,17 +96,23 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         activeCategoryId = subCat.id;
         activeSubSlug = subCat.slug;
       }
-      postsResult = await getPostsByCategory(activeCategoryId || category.id, page, 12);
+      postsResult = await getPostsByCategory(activeCategoryId || category.id, 1, 12);
     }
   } else {
-    postsResult = await getPostsByCategory(category.id, page, 12);
+    postsResult = await getPostsByCategory(category.id, 1, 12);
   }
 
   const { posts, totalPages } = postsResult;
 
-  const baseUrl = activeSubSlug
-    ? `/category/${params.slug}?sub=${activeSubSlug}`
-    : `/category/${params.slug}`;
+  // Determine which category IDs to use for client-side load-more
+  let fetchCategoryIds: number[];
+  if (isLiving && activeSubSlug === 'lifestyle') {
+    fetchCategoryIds = [49, 41];
+  } else if (activeCategoryId) {
+    fetchCategoryIds = [activeCategoryId];
+  } else {
+    fetchCategoryIds = [category.id];
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
@@ -153,20 +157,13 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         </div>
       )}
 
-      {/* Posts Grid */}
-      {posts.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post) => (
-            <ArticleCard key={post.id} post={post} />
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-20">
-          <p className="text-gray-500 text-lg">V tejto kategórii zatiaľ nie sú žiadne články.</p>
-        </div>
-      )}
-
-      <Pagination currentPage={page} totalPages={totalPages} baseUrl={baseUrl} />
+      {/* Posts Grid with Load More */}
+      <CategoryArticleGrid
+        initialPosts={posts}
+        initialTotalPages={totalPages}
+        categoryIds={fetchCategoryIds}
+        perPage={12}
+      />
     </div>
   );
 }
