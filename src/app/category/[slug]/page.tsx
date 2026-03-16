@@ -7,11 +7,12 @@ import {
   getChildCategories,
   getCategories,
   decodeHtmlEntities,
+  EXCLUDED_SLUGS,
 } from '@/lib/wordpress';
 import { SITE_NAME } from '@/lib/utils';
 import ArticleCard from '@/components/ArticleCard';
 import Pagination from '@/components/Pagination';
-import { WPCategory } from '@/lib/types';
+import { WPPost, WPCategory } from '@/lib/types';
 import { PaginatedPosts } from '@/lib/types';
 
 interface CategoryPageProps {
@@ -49,7 +50,8 @@ async function getPostsFromMultipleCategories(
   const data = await res.json();
   const totalPages = parseInt(res.headers.get('X-WP-TotalPages') || '1', 10);
   const total = parseInt(res.headers.get('X-WP-Total') || '0', 10);
-  return { posts: data, totalPages, total };
+  const posts = (data as WPPost[]).filter((p) => !EXCLUDED_SLUGS.includes(p.slug));
+  return { posts, totalPages, total };
 }
 
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {

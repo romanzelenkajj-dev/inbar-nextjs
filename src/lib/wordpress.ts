@@ -2,6 +2,8 @@ import { WPPost, WPCategory, WPPage, CategoryWithChildren, PaginatedPosts } from
 
 const API_BASE = 'https://inbar.sk/wp-json/wp/v2';
 
+export const EXCLUDED_SLUGS = ['masterclass-guest-shift-three-cents-v-bratislave'];
+
 async function fetchAPI<T>(endpoint: string, revalidate = 3600): Promise<T> {
   const res = await fetch(`${API_BASE}${endpoint}`, {
     next: { revalidate },
@@ -30,10 +32,12 @@ export async function getPosts(page = 1, perPage = 10): Promise<PaginatedPosts> 
   const { data, totalPages, total } = await fetchAPIWithHeaders(
     `/posts?per_page=${perPage}&page=${page}&_embed`
   );
-  return { posts: data, totalPages, total };
+  const posts = (data as WPPost[]).filter((p) => !EXCLUDED_SLUGS.includes(p.slug));
+  return { posts, totalPages, total };
 }
 
 export async function getPostBySlug(slug: string): Promise<WPPost | null> {
+  if (EXCLUDED_SLUGS.includes(slug)) return null;
   const posts = await fetchAPI<WPPost[]>(`/posts?slug=${encodeURIComponent(slug)}&_embed`);
   return posts.length > 0 ? posts[0] : null;
 }
@@ -46,14 +50,16 @@ export async function getPostsByCategory(
   const { data, totalPages, total } = await fetchAPIWithHeaders(
     `/posts?categories=${categoryId}&per_page=${perPage}&page=${page}&_embed`
   );
-  return { posts: data, totalPages, total };
+  const posts = (data as WPPost[]).filter((p) => !EXCLUDED_SLUGS.includes(p.slug));
+  return { posts, totalPages, total };
 }
 
 export async function searchPosts(query: string, page = 1, perPage = 12): Promise<PaginatedPosts> {
   const { data, totalPages, total } = await fetchAPIWithHeaders(
     `/posts?search=${encodeURIComponent(query)}&per_page=${perPage}&page=${page}&_embed`
   );
-  return { posts: data, totalPages, total };
+  const posts = (data as WPPost[]).filter((p) => !EXCLUDED_SLUGS.includes(p.slug));
+  return { posts, totalPages, total };
 }
 
 export async function getRelatedPosts(
@@ -65,7 +71,7 @@ export async function getRelatedPosts(
   const posts = await fetchAPI<WPPost[]>(
     `/posts?categories=${categoryIds[0]}&per_page=${perPage + 1}&exclude=${excludeId}&_embed`
   );
-  return posts.slice(0, perPage);
+  return posts.filter((p) => !EXCLUDED_SLUGS.includes(p.slug)).slice(0, perPage);
 }
 
 // Categories
