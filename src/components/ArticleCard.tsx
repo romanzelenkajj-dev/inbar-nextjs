@@ -27,7 +27,7 @@ export default function ArticleCard({
   if (variant === 'hero-side') {
     return (
       <Link href={`/${post.slug}`} className="group block relative overflow-hidden rounded-xl h-full">
-        <div className="relative h-full min-h-[200px]">
+        <div className="relative h-full min-h-[200px] overflow-hidden">
           {imageUrl ? (
             <Image
               src={imageUrl}

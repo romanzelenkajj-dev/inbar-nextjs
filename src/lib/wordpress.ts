@@ -29,10 +29,11 @@ async function fetchAPIWithHeaders(endpoint: string, revalidate = 3600) {
 
 // Posts
 export async function getPosts(page = 1, perPage = 10): Promise<PaginatedPosts> {
+  const fetchCount = perPage + EXCLUDED_SLUGS.length;
   const { data, totalPages, total } = await fetchAPIWithHeaders(
-    `/posts?per_page=${perPage}&page=${page}&_embed`
+    `/posts?per_page=${fetchCount}&page=${page}&_embed`
   );
-  const posts = (data as WPPost[]).filter((p) => !EXCLUDED_SLUGS.includes(p.slug));
+  const posts = (data as WPPost[]).filter((p) => !EXCLUDED_SLUGS.includes(p.slug)).slice(0, perPage);
   return { posts, totalPages, total };
 }
 
@@ -47,18 +48,20 @@ export async function getPostsByCategory(
   page = 1,
   perPage = 12
 ): Promise<PaginatedPosts> {
+  const fetchCount = perPage + EXCLUDED_SLUGS.length;
   const { data, totalPages, total } = await fetchAPIWithHeaders(
-    `/posts?categories=${categoryId}&per_page=${perPage}&page=${page}&_embed`
+    `/posts?categories=${categoryId}&per_page=${fetchCount}&page=${page}&_embed`
   );
-  const posts = (data as WPPost[]).filter((p) => !EXCLUDED_SLUGS.includes(p.slug));
+  const posts = (data as WPPost[]).filter((p) => !EXCLUDED_SLUGS.includes(p.slug)).slice(0, perPage);
   return { posts, totalPages, total };
 }
 
 export async function searchPosts(query: string, page = 1, perPage = 12): Promise<PaginatedPosts> {
+  const fetchCount = perPage + EXCLUDED_SLUGS.length;
   const { data, totalPages, total } = await fetchAPIWithHeaders(
-    `/posts?search=${encodeURIComponent(query)}&per_page=${perPage}&page=${page}&_embed`
+    `/posts?search=${encodeURIComponent(query)}&per_page=${fetchCount}&page=${page}&_embed`
   );
-  const posts = (data as WPPost[]).filter((p) => !EXCLUDED_SLUGS.includes(p.slug));
+  const posts = (data as WPPost[]).filter((p) => !EXCLUDED_SLUGS.includes(p.slug)).slice(0, perPage);
   return { posts, totalPages, total };
 }
 
