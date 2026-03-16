@@ -76,13 +76,13 @@ export default function CategoryArticleGrid({
       )}
 
       {hasMore && (
-        <div className="mt-12 flex justify-center">
+        <div className="mt-10 mb-4 flex justify-center">
           <button
             onClick={loadMore}
             disabled={loading}
-            className="max-w-2xl w-full block bg-gray-900 text-white uppercase tracking-widest font-semibold text-sm py-4 px-8 hover:bg-gray-800 transition-colors disabled:opacity-70"
+            className="px-12 py-3 border border-gray-800 text-gray-800 bg-transparent text-sm uppercase tracking-[0.2em] font-medium hover:bg-gray-900 hover:text-white transition-colors duration-300 disabled:opacity-50"
           >
-            {loading ? 'NAČÍTAVA SA...' : 'ZOBRAZIŤ VIAC'}
+            {loading ? 'NAČÍTAVA SA…' : 'ZOBRAZIŤ VIAC'}
           </button>
         </div>
       )}
