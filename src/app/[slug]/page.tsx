@@ -14,7 +14,7 @@ import {
 import { stripHtml, truncateText, SITE_URL } from '@/lib/utils';
 import ShareButtons from '@/components/ShareButtons';
 import ArticleCard from '@/components/ArticleCard';
-import AdBanner from '@/components/AdBanner';
+import SponsorBanner from '@/components/SponsorBanner';
 
 interface ArticlePageProps {
   params: { slug: string };
@@ -132,8 +132,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </section>
       )}
 
-      {/* Ad Banner */}
-      <AdBanner />
+      {/* Sponsor Banner */}
+      <SponsorBanner size="medium" className="my-8 max-w-3xl mx-auto px-4" />
     </article>
   );
 }

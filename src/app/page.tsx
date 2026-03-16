@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { getPosts, getPostsByCategory } from '@/lib/wordpress';
 import HeroSection from '@/components/HeroSection';
 import CategorySection from '@/components/CategorySection';
-import AdBanner from '@/components/AdBanner';
+import SponsorBanner from '@/components/SponsorBanner';
 import { SITE_NAME, SITE_DESCRIPTION } from '@/lib/utils';
 
 export const metadata: Metadata = {
@@ -28,9 +28,11 @@ export default async function HomePage() {
 
       <CategorySection title="Drinking" slug="drinking" posts={drinkingPosts.posts} />
 
-      <AdBanner />
+      <SponsorBanner size="wide" className="my-8 max-w-7xl mx-auto px-4" />
 
       <CategorySection title="Dining" slug="dining" posts={diningPosts.posts} />
+
+      <SponsorBanner size="square" className="my-8 max-w-7xl mx-auto px-4" />
 
       <div className="max-w-7xl mx-auto px-4">
         <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
