@@ -70,11 +70,11 @@ export default function Header() {
             <Link href="/" className="flex-shrink-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/INBAR-LOGO-WEB-WHITE.jpg"
-                alt="InBar Magazine"
-                width={140}
-                height={50}
-                className="h-10 w-auto"
+                src="/INBAR-LOGO-WEB-WHITE.png"
+                alt="InBar Restaurant"
+                width={160}
+                height={32}
+                className="h-8 w-auto"
               />
             </Link>
 

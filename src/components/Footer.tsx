@@ -10,11 +10,11 @@ export default function Footer() {
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/INBAR-LOGO-WEB-WHITE.jpg"
-              alt="InBar Magazine"
-              width={120}
-              height={43}
-              className="h-8 w-auto mb-4"
+              src="/INBAR-LOGO-WEB-WHITE.png"
+              alt="InBar Restaurant"
+              width={150}
+              height={30}
+              className="h-7 w-auto mb-4"
             />
             <p className="text-sm text-gray-500 leading-relaxed">
               {SITE_DESCRIPTION}
