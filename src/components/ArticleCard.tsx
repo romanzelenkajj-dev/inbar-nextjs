@@ -33,14 +33,14 @@ export default function ArticleCard({
               src={imageUrl}
               alt={imageAlt}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover transition-transform duration-700 group-hover:scale-105 z-0"
               sizes="(max-width: 768px) 100vw, 33vw"
             />
           ) : (
             <div className="w-full h-full bg-dark-card" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-4">
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-dark/80 via-dark/40 to-transparent z-10" />
+          <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
             {showCategory && firstCategory && (
               <span className="inline-block text-[10px] font-medium tracking-widest uppercase text-gold mb-1" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
                 {firstCategory.name}
