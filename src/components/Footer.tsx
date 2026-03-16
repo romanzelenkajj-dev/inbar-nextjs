@@ -21,7 +21,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4 mt-4">
               <a
-                href="https://www.instagram.com/inbar_magazine/"
+                href="https://www.instagram.com/inbar.magazine"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-gold transition-colors"
@@ -32,7 +32,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.facebook.com/InBarMagazine/"
+                href="https://www.facebook.com/inbar.restaurant"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-gold transition-colors"

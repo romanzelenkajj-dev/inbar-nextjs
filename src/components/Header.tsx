@@ -16,7 +16,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-xs text-gray-500">
           <div className="flex items-center gap-4">
             <a
-              href="https://www.instagram.com/inbar_magazine/"
+              href="https://www.instagram.com/inbar.magazine"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gold transition-colors"
@@ -27,7 +27,7 @@ export default function Header() {
               </svg>
             </a>
             <a
-              href="https://www.facebook.com/InBarMagazine/"
+              href="https://www.facebook.com/inbar.restaurant"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gold transition-colors"
