@@ -15,8 +15,10 @@ interface SponsorBannerProps {
 export default function SponsorBanner({ size, className }: SponsorBannerProps) {
   const { src, width, height } = bannerConfig[size];
 
+  const sizeClasses = size === 'medium' ? 'max-w-3xl mx-auto py-8' : '';
+
   return (
-    <div className={`text-center ${className ?? ''}`}>
+    <div className={`text-center ${sizeClasses} ${className ?? ''}`.trim()}>
       <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Reklama</p>
       <a
         href="https://www.alkoshop.sk/?s=pampero&post_type=product&type_aws=true&aws_id=1&aws_filter=1"

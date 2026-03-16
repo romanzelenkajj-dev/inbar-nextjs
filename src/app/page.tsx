@@ -28,11 +28,9 @@ export default async function HomePage() {
 
       <CategorySection title="Drinking" slug="drinking" posts={drinkingPosts.posts} />
 
-      <SponsorBanner size="wide" className="my-8 max-w-7xl mx-auto px-4" />
+      <SponsorBanner size="medium" />
 
       <CategorySection title="Dining" slug="dining" posts={diningPosts.posts} />
-
-      <SponsorBanner size="square" className="my-8 max-w-7xl mx-auto px-4" />
 
       <div className="max-w-7xl mx-auto px-4">
         <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
