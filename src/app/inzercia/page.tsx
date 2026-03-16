@@ -16,10 +16,6 @@ export default function AdvertisingPage() {
 
       <div className="wp-content mb-12">
         <p>
-          InBar Magazine ponúka rôzne formy spolupráce a inzertné priestory pre značky
-          a podniky zo sveta gastronómie, nápojov a životného štýlu.
-        </p>
-        <p>
           Pre viac informácií o možnostiach inzercie nás neváhajte kontaktovať:
         </p>
       </div>
@@ -37,10 +33,10 @@ export default function AdvertisingPage() {
 
         <div className="bg-cream-dark border border-gray-200 rounded-xl p-6">
           <p className="text-sm text-gray-700">
-            <strong className="text-gray-900 block mb-2">Peter Nemec</strong>
-            tel.: <a href="tel:+421911160599" className="text-gold hover:text-gold-light transition-colors">+421 911 160 599</a><br />
-            <a href="mailto:peter.nemec@propublishing.sk" className="text-gold hover:text-gold-light transition-colors text-xs">
-              peter.nemec@propublishing.sk
+            <strong className="text-gray-900 block mb-2">Martin Obert</strong>
+            tel.: <a href="tel:+421905343812" className="text-gold hover:text-gold-light transition-colors">+421 905 343 812</a><br />
+            <a href="mailto:martin.obert@propublishing.sk" className="text-gold hover:text-gold-light transition-colors text-xs">
+              martin.obert@propublishing.sk
             </a>
           </p>
         </div>

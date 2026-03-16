@@ -47,7 +47,7 @@ export default function PrivacyPage() {
           Máte právo na prístup k vašim osobným údajom, ich opravu, vymazanie, obmedzenie
           spracovania, prenositeľnosť údajov a právo namietať proti spracovaniu. Pre uplatnenie
           vašich práv nás kontaktujte na adrese{' '}
-          <a href="mailto:elena.strapkova@propublishing.sk">elena.strapkova@propublishing.sk</a>.
+          <a href="mailto:office@propublishing.sk">office@propublishing.sk</a>.
         </p>
 
         <h3>Kontakt</h3>
@@ -55,7 +55,7 @@ export default function PrivacyPage() {
           V prípade otázok ohľadom ochrany osobných údajov nás kontaktujte:<br />
           PRO PUBLISHING s. r. o.<br />
           Landererova 6, 811 09 Bratislava<br />
-          e-mail: <a href="mailto:elena.strapkova@propublishing.sk">elena.strapkova@propublishing.sk</a>
+          e-mail: <a href="mailto:office@propublishing.sk">office@propublishing.sk</a>
         </p>
       </div>
     </div>

@@ -30,10 +30,10 @@ export default function AboutPage() {
 
         <h3>Šéfredaktorka</h3>
         <p>
-          Elena Strápková<br />
-          tel.: +421 948 372 176<br />
+          Alexandra Tinková<br />
+          tel.: +421 903 897 411<br />
           e-mail:{' '}
-          <a href="mailto:elena.strapkova@propublishing.sk">elena.strapkova@propublishing.sk</a>
+          <a href="mailto:alexandra.tinkova@propublishing.sk">alexandra.tinkova@propublishing.sk</a>
         </p>
       </div>
     </div>
