@@ -1,13 +1,19 @@
-import { Metadata } from 'next';
 import { getPosts, getPostsByCategory } from '@/lib/wordpress';
 import HeroSection from '@/components/HeroSection';
 import CategorySection from '@/components/CategorySection';
 import SponsorBanner from '@/components/SponsorBanner';
-import { SITE_NAME, SITE_DESCRIPTION } from '@/lib/utils';
+import { SITE_NAME, SITE_URL } from '@/lib/utils';
 
-export const metadata: Metadata = {
-  title: `${SITE_NAME} – Bar, Restaurant & Lifestyle`,
-  description: SITE_DESCRIPTION,
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${SITE_URL}/search?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
 };
 
 export default async function HomePage() {
@@ -20,6 +26,10 @@ export default async function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
       <HeroSection posts={latestPosts.posts} />
 
       <div className="max-w-7xl mx-auto px-4">

@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
-import { SITE_NAME } from '@/lib/utils';
+import { SITE_NAME, SITE_URL } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `O nás | ${SITE_NAME}`,
   description: 'O redakcii InBar&Restaurant – slovenský online magazín o baroch, reštauráciách a životnom štýle.',
+  alternates: { canonical: `${SITE_URL}/o-nas` },
 };
 
 export default function AboutPage() {

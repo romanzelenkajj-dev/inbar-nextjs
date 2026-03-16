@@ -5,17 +5,17 @@ import Footer from '@/components/Footer';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} – Bar, Restaurant & Lifestyle`,
-    template: `%s | ${SITE_NAME}`,
+    default: 'InBar&Restaurant – Bar, Restaurant & Lifestyle Magazine',
+    template: '%s | InBar&Restaurant',
   },
   description: SITE_DESCRIPTION,
-  metadataBase: new URL(SITE_URL),
   openGraph: {
     type: 'website',
     locale: 'sk_SK',
     siteName: SITE_NAME,
-    title: SITE_NAME,
+    title: 'InBar&Restaurant – Bar, Restaurant & Lifestyle Magazine',
     description: SITE_DESCRIPTION,
     images: [
       {
@@ -33,6 +33,17 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: SITE_URL,
+  },
+};
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: 'https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
 };
 
 export default function RootLayout({
@@ -43,6 +54,10 @@ export default function RootLayout({
   return (
     <html lang="sk">
       <body className="min-h-screen flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

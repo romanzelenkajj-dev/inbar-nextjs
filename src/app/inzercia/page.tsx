@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
-import { SITE_NAME } from '@/lib/utils';
+import { SITE_NAME, SITE_URL } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `Inzercia | ${SITE_NAME}`,
   description: 'Inzertné možnosti v InBar&Restaurant – oslovte milovníkov gastronómie a životného štýlu.',
+  alternates: { canonical: `${SITE_URL}/inzercia` },
 };
 
 export default function AdvertisingPage() {

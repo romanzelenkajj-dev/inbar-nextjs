@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
-import { SITE_NAME } from '@/lib/utils';
+import { SITE_NAME, SITE_URL } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `Cookies | ${SITE_NAME}`,
   description: 'Zásady používania cookies na stránke InBar&Restaurant.',
+  alternates: { canonical: `${SITE_URL}/cookies` },
 };
 
 export default function CookiesPage() {

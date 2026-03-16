@@ -15,7 +15,7 @@ interface SponsorBannerProps {
 export default function SponsorBanner({ size, className }: SponsorBannerProps) {
   const { src, width, height } = bannerConfig[size];
 
-  const sizeClasses = size === 'medium' ? 'max-w-3xl mx-auto py-8' : '';
+  const sizeClasses = size === 'medium' ? 'max-w-3xl mx-auto py-4' : '';
 
   return (
     <div className={`text-center ${sizeClasses} ${className ?? ''}`.trim()}>

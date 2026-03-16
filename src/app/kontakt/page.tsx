@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
-import { SITE_NAME } from '@/lib/utils';
+import { SITE_NAME, SITE_URL } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `Kontakt | ${SITE_NAME}`,
   description: 'Kontaktujte redakciu InBar&Restaurant.',
+  alternates: { canonical: `${SITE_URL}/kontakt` },
 };
 
 export default function ContactPage() {

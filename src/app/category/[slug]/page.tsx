@@ -9,7 +9,7 @@ import {
   decodeHtmlEntities,
   EXCLUDED_SLUGS,
 } from '@/lib/wordpress';
-import { SITE_NAME } from '@/lib/utils';
+import { SITE_NAME, SITE_URL } from '@/lib/utils';
 import CategoryArticleGrid from '@/components/CategoryArticleGrid';
 import { WPPost } from '@/lib/types';
 import { PaginatedPosts } from '@/lib/types';
@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   return {
     title: `${category.name} | ${SITE_NAME}`,
     description: category.description || `Články v kategórii ${category.name}`,
+    alternates: {
+      canonical: `${SITE_URL}/category/${category.slug}`,
+    },
     openGraph: {
       title: `${category.name} | ${SITE_NAME}`,
       description: category.description || `Články v kategórii ${category.name}`,

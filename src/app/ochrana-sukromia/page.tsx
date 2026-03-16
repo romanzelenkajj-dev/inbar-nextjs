@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
-import { SITE_NAME } from '@/lib/utils';
+import { SITE_NAME, SITE_URL } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `Ochrana súkromia | ${SITE_NAME}`,
   description: 'Zásady ochrany osobných údajov InBar&Restaurant.',
+  alternates: { canonical: `${SITE_URL}/ochrana-sukromia` },
 };
 
 export default function PrivacyPage() {

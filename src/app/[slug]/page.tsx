@@ -11,7 +11,7 @@ import {
   getPostCategories,
   decodeHtmlEntities,
 } from '@/lib/wordpress';
-import { stripHtml, truncateText, SITE_URL } from '@/lib/utils';
+import { stripHtml, truncateText, SITE_URL, SITE_NAME } from '@/lib/utils';
 import ShareButtons from '@/components/ShareButtons';
 import ArticleCard from '@/components/ArticleCard';
 import SponsorBanner from '@/components/SponsorBanner';
@@ -31,11 +31,15 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   return {
     title,
     description,
+    alternates: {
+      canonical: `${SITE_URL}/${post.slug}`,
+    },
     openGraph: {
       title,
       description,
       type: 'article',
       publishedTime: post.date,
+      modifiedTime: post.modified,
       url: `${SITE_URL}/${post.slug}`,
       images: imageUrl ? [{ url: imageUrl, width: 1200, height: 630 }] : [],
     },
@@ -60,8 +64,31 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const relatedPosts = await getRelatedPosts(post.categories, post.id, 4);
   const articleUrl = `${SITE_URL}/${post.slug}`;
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    datePublished: post.date,
+    dateModified: post.modified,
+    author: authorName ? { '@type': 'Person', name: authorName } : { '@type': 'Organization', name: SITE_NAME },
+    image: imageUrl || undefined,
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
+      },
+    },
+    mainEntityOfPage: articleUrl,
+  };
+
   return (
     <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* Hero Image */}
       {imageUrl && (
         <div className="relative w-full min-h-[60vh] md:min-h-[65vh] flex flex-col">
@@ -133,7 +160,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       )}
 
       {/* Sponsor Banner */}
-      <SponsorBanner size="medium" className="my-8 max-w-3xl mx-auto px-4" />
+      <SponsorBanner size="medium" className="my-4 max-w-3xl mx-auto px-4" />
     </article>
   );
 }
