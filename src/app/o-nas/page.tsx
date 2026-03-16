@@ -3,7 +3,7 @@ import { SITE_NAME } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `O nás | ${SITE_NAME}`,
-  description: 'O redakcii InBar Magazine – slovenský online magazín o baroch, reštauráciách a životnom štýle.',
+  description: 'O redakcii InBar&Restaurant – slovenský online magazín o baroch, reštauráciách a životnom štýle.',
 };
 
 export default function AboutPage() {

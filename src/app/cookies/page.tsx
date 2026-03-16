@@ -3,7 +3,7 @@ import { SITE_NAME } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `Cookies | ${SITE_NAME}`,
-  description: 'Zásady používania cookies na stránke InBar Magazine.',
+  description: 'Zásady používania cookies na stránke InBar&Restaurant.',
 };
 
 export default function CookiesPage() {

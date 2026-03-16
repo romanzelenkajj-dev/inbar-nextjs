@@ -3,7 +3,7 @@ import { SITE_NAME } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `Ochrana súkromia | ${SITE_NAME}`,
-  description: 'Zásady ochrany osobných údajov InBar Magazine.',
+  description: 'Zásady ochrany osobných údajov InBar&Restaurant.',
 };
 
 export default function PrivacyPage() {

@@ -3,7 +3,7 @@ import { SITE_NAME } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `Kontakt | ${SITE_NAME}`,
-  description: 'Kontaktujte redakciu InBar Magazine.',
+  description: 'Kontaktujte redakciu InBar&Restaurant.',
 };
 
 export default function ContactPage() {

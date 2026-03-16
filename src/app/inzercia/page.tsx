@@ -3,7 +3,7 @@ import { SITE_NAME } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: `Inzercia | ${SITE_NAME}`,
-  description: 'Inzertné možnosti v InBar Magazine – oslovte milovníkov gastronómie a životného štýlu.',
+  description: 'Inzertné možnosti v InBar&Restaurant – oslovte milovníkov gastronómie a životného štýlu.',
 };
 
 export default function AdvertisingPage() {

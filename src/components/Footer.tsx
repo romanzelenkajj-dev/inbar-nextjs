@@ -87,7 +87,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="border-t border-dark-border mt-10 pt-6 text-center">
           <p className="text-xs text-gray-600">
-            &copy; {new Date().getFullYear()} InBar Magazine. Všetky práva vyhradené.
+            &copy; {new Date().getFullYear()} InBar&amp;Restaurant. Všetky práva vyhradené.
           </p>
         </div>
       </div>

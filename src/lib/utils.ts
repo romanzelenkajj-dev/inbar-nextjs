@@ -45,6 +45,6 @@ export const FOOTER_LINKS = [
   { name: 'Cookies', href: '/cookies' },
 ] as const;
 
-export const SITE_NAME = 'InBar Magazine';
+export const SITE_NAME = 'InBar&Restaurant';
 export const SITE_DESCRIPTION = 'Slovenský magazín o gastronómii, nápojovej kultúre a životnom štýle pre tých, ktorí si vedia vychutnať každý moment.';
 export const SITE_URL = 'https://inbar.sk';
