@@ -47,4 +47,4 @@ export const FOOTER_LINKS = [
 
 export const SITE_NAME = 'InBar&Restaurant';
 export const SITE_DESCRIPTION = 'Slovenský magazín o gastronómii, nápojovej kultúre a životnom štýle pre tých, ktorí si vedia vychutnať každý moment.';
-export const SITE_URL = 'https://inbar-nextjs.vercel.app';
+export const SITE_URL = 'https://inbar.sk';

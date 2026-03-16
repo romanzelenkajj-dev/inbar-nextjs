@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next';
 import { EXCLUDED_SLUGS } from '@/lib/wordpress';
 
-const SITE_URL = 'https://inbar-nextjs.vercel.app';
-const WP_API = 'https://inbar.sk/wp-json/wp/v2';
+const SITE_URL = 'https://inbar.sk';
+const WP_API = 'https://cms.inbar.sk/wp-json/wp/v2';
 
 interface WPPostSlug {
   slug: string;

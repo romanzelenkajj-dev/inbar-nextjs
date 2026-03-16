@@ -1,6 +1,6 @@
 import { WPPost, WPCategory, WPPage, CategoryWithChildren, PaginatedPosts } from './types';
 
-const API_BASE = 'https://inbar.sk/wp-json/wp/v2';
+const API_BASE = 'https://cms.inbar.sk/wp-json/wp/v2';
 
 export const EXCLUDED_SLUGS = ['masterclass-guest-shift-three-cents-v-bratislave'];
 
@@ -107,11 +107,20 @@ export async function getPageBySlug(slug: string): Promise<WPPage | null> {
   return pages.length > 0 ? pages[0] : null;
 }
 
+// Media URL rewriting — once inbar.sk points to Vercel, WordPress uploads
+// must be served from cms.inbar.sk instead.
+export function rewriteMediaUrls(html: string): string {
+  return html.replace(
+    /https:\/\/inbar\.sk\/app\/uploads\//g,
+    'https://cms.inbar.sk/app/uploads/'
+  );
+}
+
 // Helpers
 export function getFeaturedImageUrl(post: WPPost): string | null {
   const media = post._embedded?.['wp:featuredmedia']?.[0];
   if (!media?.source_url) return null;
-  return media.source_url;
+  return rewriteMediaUrls(media.source_url);
 }
 
 export function getFeaturedImageAlt(post: WPPost): string {

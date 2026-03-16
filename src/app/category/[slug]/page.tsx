@@ -43,7 +43,7 @@ async function getPostsFromMultipleCategories(
   perPage: number
 ): Promise<PaginatedPosts> {
   const res = await fetch(
-    `https://inbar.sk/wp-json/wp/v2/posts?categories=${categoryIds.join(',')}&per_page=${perPage}&page=${page}&_embed`,
+    `https://cms.inbar.sk/wp-json/wp/v2/posts?categories=${categoryIds.join(',')}&per_page=${perPage}&page=${page}&_embed`,
     { next: { revalidate: 3600 } }
   );
   if (!res.ok) {

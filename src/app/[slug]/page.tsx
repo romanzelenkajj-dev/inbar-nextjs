@@ -10,6 +10,7 @@ import {
   getAuthorName,
   getPostCategories,
   decodeHtmlEntities,
+  rewriteMediaUrls,
 } from '@/lib/wordpress';
 import { stripHtml, truncateText, SITE_URL, SITE_NAME } from '@/lib/utils';
 import ShareButtons from '@/components/ShareButtons';
@@ -77,7 +78,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
+        url: 'https://cms.inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
       },
     },
     mainEntityOfPage: articleUrl,
@@ -135,7 +136,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         {/* Content */}
         <div
           className="wp-content"
-          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+          dangerouslySetInnerHTML={{ __html: rewriteMediaUrls(post.content.rendered) }}
         />
 
         {/* Bottom Share */}

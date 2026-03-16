@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'inbar.sk',
+        hostname: 'cms.inbar.sk',
         pathname: '/app/uploads/**',
       },
     ],

@@ -37,7 +37,7 @@ export default function CategoryArticleGrid({
 
     try {
       const res = await fetch(
-        `https://inbar.sk/wp-json/wp/v2/posts?categories=${categoryIds.join(',')}&per_page=${perPage}&page=${nextPage}&_embed`
+        `https://cms.inbar.sk/wp-json/wp/v2/posts?categories=${categoryIds.join(',')}&per_page=${perPage}&page=${nextPage}&_embed`
       );
 
       if (!res.ok) {

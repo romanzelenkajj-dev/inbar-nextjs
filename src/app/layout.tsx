@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: 'https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
+        url: 'https://cms.inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
         width: 600,
         height: 200,
         alt: SITE_NAME,
@@ -44,7 +44,7 @@ const organizationJsonLd = {
   '@type': 'Organization',
   name: SITE_NAME,
   url: SITE_URL,
-  logo: 'https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
+  logo: 'https://cms.inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
 };
 
 export default function RootLayout({
