@@ -110,9 +110,11 @@ export function getFeaturedImageAlt(post: WPPost): string {
   return media?.alt_text || decodeHtmlEntities(post.title.rendered);
 }
 
-export function getAuthorName(post: WPPost): string {
+export function getAuthorName(post: WPPost): string | null {
   const author = post._embedded?.author?.[0];
-  return author?.name || 'InBar Redakcia';
+  const name = author?.name || null;
+  if (!name || name === 'InBar Redakcia') return null;
+  return name;
 }
 
 export function getPostCategories(post: WPPost): Array<{ id: number; name: string; slug: string }> {

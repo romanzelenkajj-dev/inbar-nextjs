@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function CookiesPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-8">
+      <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-8">
         Zásady používania cookies
       </h1>
 

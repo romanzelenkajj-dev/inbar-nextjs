@@ -10,7 +10,7 @@ export default function Footer() {
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png"
+              src="/INBAR-LOGO-WEB-WHITE.jpg"
               alt="InBar Magazine"
               width={120}
               height={43}

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-8">O nás</h1>
+      <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-8">O nás</h1>
 
       <div className="wp-content">
         <h2>INBAR &amp; RESTAURANT</h2>

@@ -16,7 +16,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
         href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-9 h-9 flex items-center justify-center rounded-full bg-dark-card border border-dark-border text-gray-400 hover:text-gold hover:border-gold transition-colors"
+        className="w-9 h-9 flex items-center justify-center rounded-full bg-cream-dark border border-gray-200 text-gray-500 hover:text-gold hover:border-gold transition-colors"
         aria-label="Zdieľať na Facebooku"
       >
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -27,7 +27,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
         href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-9 h-9 flex items-center justify-center rounded-full bg-dark-card border border-dark-border text-gray-400 hover:text-gold hover:border-gold transition-colors"
+        className="w-9 h-9 flex items-center justify-center rounded-full bg-cream-dark border border-gray-200 text-gray-500 hover:text-gold hover:border-gold transition-colors"
         aria-label="Zdieľať na X"
       >
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -38,7 +38,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
         onClick={() => {
           navigator.clipboard.writeText(url);
         }}
-        className="w-9 h-9 flex items-center justify-center rounded-full bg-dark-card border border-dark-border text-gray-400 hover:text-gold hover:border-gold transition-colors"
+        className="w-9 h-9 flex items-center justify-center rounded-full bg-cream-dark border border-gray-200 text-gray-500 hover:text-gold hover:border-gold transition-colors"
         aria-label="Kopírovať odkaz"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -15,10 +15,10 @@ export default function CategorySection({ title, slug, posts }: CategorySectionP
     <section className="max-w-7xl mx-auto px-4 py-10">
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
-          <h2 className="text-2xl md:text-3xl font-serif font-bold text-white">
+          <h2 className="text-2xl md:text-3xl font-serif font-bold text-gray-900">
             {title}
           </h2>
-          <div className="hidden sm:block h-px bg-dark-border flex-1 min-w-[60px]" />
+          <div className="hidden sm:block h-px bg-gray-200 flex-1 min-w-[60px]" />
         </div>
         <Link
           href={`/category/${slug}`}

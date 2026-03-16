@@ -2,11 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { WPPost } from '@/lib/types';
 import { getFeaturedImageUrl, getFeaturedImageAlt, decodeHtmlEntities, getPostCategories } from '@/lib/wordpress';
-import { formatDateShort, stripHtml, truncateText } from '@/lib/utils';
+import { stripHtml, truncateText } from '@/lib/utils';
 
 interface ArticleCardProps {
   post: WPPost;
-  variant?: 'default' | 'large' | 'compact';
+  variant?: 'default' | 'large' | 'compact' | 'hero-side';
   showExcerpt?: boolean;
   showCategory?: boolean;
 }
@@ -23,6 +23,37 @@ export default function ArticleCard({
   const excerpt = truncateText(stripHtml(decodeHtmlEntities(post.excerpt.rendered)), 120);
   const categories = getPostCategories(post);
   const firstCategory = categories[0];
+
+  if (variant === 'hero-side') {
+    return (
+      <Link href={`/${post.slug}`} className="group block relative overflow-hidden rounded-xl h-full">
+        <div className="relative h-full min-h-[200px]">
+          {imageUrl ? (
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          ) : (
+            <div className="w-full h-full bg-dark-card" />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-transparent to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-4">
+            {showCategory && firstCategory && (
+              <span className="inline-block text-[10px] font-medium tracking-widest uppercase text-gold mb-1" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
+                {firstCategory.name}
+              </span>
+            )}
+            <h3 className="text-lg font-serif font-bold text-white leading-snug group-hover:text-gold transition-colors duration-300" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.7)' }}>
+              {title}
+            </h3>
+          </div>
+        </div>
+      </Link>
+    );
+  }
 
   if (variant === 'large') {
     return (
@@ -55,9 +86,6 @@ export default function ArticleCard({
                 {excerpt}
               </p>
             )}
-            <time className="text-xs text-gray-400 mt-3 block">
-              {formatDateShort(post.date)}
-            </time>
           </div>
         </div>
       </Link>
@@ -84,12 +112,9 @@ export default function ArticleCard({
               {firstCategory.name}
             </span>
           )}
-          <h3 className="text-sm font-serif font-semibold text-white leading-snug mt-1 group-hover:text-gold transition-colors duration-300 line-clamp-2">
+          <h3 className="text-sm font-serif font-semibold text-gray-900 leading-snug mt-1 group-hover:text-gold transition-colors duration-300 line-clamp-2">
             {title}
           </h3>
-          <time className="text-[11px] text-gray-500 mt-1 block">
-            {formatDateShort(post.date)}
-          </time>
         </div>
       </Link>
     );
@@ -118,17 +143,14 @@ export default function ArticleCard({
             {firstCategory.name}
           </span>
         )}
-        <h3 className="text-lg font-serif font-semibold text-white leading-snug mt-1 group-hover:text-gold transition-colors duration-300 line-clamp-2">
+        <h3 className="text-lg font-serif font-semibold text-gray-900 leading-snug mt-1 group-hover:text-gold transition-colors duration-300 line-clamp-2">
           {title}
         </h3>
         {showExcerpt && (
-          <p className="text-sm text-gray-400 mt-2 line-clamp-2">
+          <p className="text-sm text-gray-600 mt-2 line-clamp-2">
             {excerpt}
           </p>
         )}
-        <time className="text-xs text-gray-500 mt-2 block">
-          {formatDateShort(post.date)}
-        </time>
       </div>
     </Link>
   );

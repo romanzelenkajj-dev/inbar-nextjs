@@ -22,7 +22,7 @@ export default function HeroSection({ posts }: HeroSectionProps) {
         <div className="flex flex-col gap-6">
           {sidePosts.slice(0, 2).map((post) => (
             <div key={post.id} className="flex-1">
-              <ArticleCard post={post} variant="large" showExcerpt={false} />
+              <ArticleCard post={post} variant="hero-side" showExcerpt={false} />
             </div>
           ))}
         </div>

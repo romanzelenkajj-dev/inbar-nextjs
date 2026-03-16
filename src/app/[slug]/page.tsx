@@ -11,9 +11,10 @@ import {
   getPostCategories,
   decodeHtmlEntities,
 } from '@/lib/wordpress';
-import { formatDate, stripHtml, truncateText, SITE_URL } from '@/lib/utils';
+import { stripHtml, truncateText, SITE_URL } from '@/lib/utils';
 import ShareButtons from '@/components/ShareButtons';
 import ArticleCard from '@/components/ArticleCard';
+import AdBanner from '@/components/AdBanner';
 
 interface ArticlePageProps {
   params: { slug: string };
@@ -97,10 +98,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </h1>
 
         {/* Meta */}
-        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-8 pb-8 border-b border-dark-border">
-          <span>{authorName}</span>
-          <span className="text-dark-border">|</span>
-          <time dateTime={post.date}>{formatDate(post.date)}</time>
+        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-8 pb-8 border-b border-gray-200">
+          {authorName && <span className="text-gray-700">{authorName}</span>}
           <div className="ml-auto">
             <ShareButtons url={articleUrl} title={title} />
           </div>
@@ -113,7 +112,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         />
 
         {/* Bottom Share */}
-        <div className="mt-12 pt-8 border-t border-dark-border">
+        <div className="mt-12 pt-8 border-t border-gray-200">
           <ShareButtons url={articleUrl} title={title} />
         </div>
       </div>
@@ -121,8 +120,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       {/* Related Articles */}
       {relatedPosts.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 py-16">
-          <div className="h-px bg-gradient-to-r from-transparent via-dark-border to-transparent mb-12" />
-          <h2 className="text-2xl font-serif font-bold text-white mb-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent mb-12" />
+          <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8">
             Súvisiace články
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -132,6 +131,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </div>
         </section>
       )}
+
+      {/* Ad Banner */}
+      <AdBanner />
     </article>
   );
 }

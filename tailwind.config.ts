@@ -20,6 +20,10 @@ const config: Config = {
           card: '#1e1e1e',
           border: '#2a2a2a',
         },
+        cream: {
+          DEFAULT: '#faf8f5',
+          dark: '#f0ece6',
+        },
       },
       fontFamily: {
         serif: ['Georgia', 'Playfair Display', 'serif'],

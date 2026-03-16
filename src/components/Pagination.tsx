@@ -34,7 +34,7 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
       {currentPage > 1 && (
         <Link
           href={getUrl(currentPage - 1)}
-          className="px-3 py-2 text-sm text-gray-400 hover:text-gold transition-colors"
+          className="px-3 py-2 text-sm text-gray-500 hover:text-gold transition-colors"
         >
           &larr; Predošlá
         </Link>
@@ -42,7 +42,7 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
 
       {pages.map((page, i) =>
         typeof page === 'string' ? (
-          <span key={`ellipsis-${i}`} className="px-2 text-gray-600">
+          <span key={`ellipsis-${i}`} className="px-2 text-gray-400">
             {page}
           </span>
         ) : (
@@ -52,7 +52,7 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
             className={`px-3 py-2 text-sm rounded-lg transition-colors ${
               page === currentPage
                 ? 'bg-gold text-dark font-semibold'
-                : 'text-gray-400 hover:text-gold hover:bg-dark-card'
+                : 'text-gray-500 hover:text-gold hover:bg-cream-dark'
             }`}
           >
             {page}
@@ -63,7 +63,7 @@ export default function Pagination({ currentPage, totalPages, baseUrl }: Paginat
       {currentPage < totalPages && (
         <Link
           href={getUrl(currentPage + 1)}
-          className="px-3 py-2 text-sm text-gray-400 hover:text-gold transition-colors"
+          className="px-3 py-2 text-sm text-gray-500 hover:text-gold transition-colors"
         >
           Ďalšia &rarr;
         </Link>

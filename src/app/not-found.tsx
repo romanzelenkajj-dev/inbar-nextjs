@@ -9,8 +9,8 @@ export default function NotFound() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-20 text-center">
       <h1 className="text-6xl md:text-8xl font-serif font-bold text-gold mb-4">404</h1>
-      <h2 className="text-2xl font-serif text-white mb-4">Stránka nenájdená</h2>
-      <p className="text-gray-400 mb-8">
+      <h2 className="text-2xl font-serif text-gray-900 mb-4">Stránka nenájdená</h2>
+      <p className="text-gray-600 mb-8">
         Hľadaná stránka neexistuje alebo bola presunutá.
       </p>
       <Link

@@ -23,7 +23,7 @@ export default async function HomePage() {
       <HeroSection posts={latestPosts.posts} />
 
       <div className="max-w-7xl mx-auto px-4">
-        <div className="h-px bg-gradient-to-r from-transparent via-dark-border to-transparent" />
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
       </div>
 
       <CategorySection title="Drinking" slug="drinking" posts={drinkingPosts.posts} />
@@ -33,7 +33,7 @@ export default async function HomePage() {
       <CategorySection title="Dining" slug="dining" posts={diningPosts.posts} />
 
       <div className="max-w-7xl mx-auto px-4">
-        <div className="h-px bg-gradient-to-r from-transparent via-dark-border to-transparent" />
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
       </div>
 
       <CategorySection title="Living" slug="living" posts={livingPosts.posts} />

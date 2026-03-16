@@ -9,14 +9,14 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-8">Kontakt</h1>
+      <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-8">Kontakt</h1>
 
       <div className="grid gap-8 md:grid-cols-2">
-        <div className="bg-dark-card border border-dark-border rounded-xl p-6">
+        <div className="bg-cream-dark border border-gray-200 rounded-xl p-6">
           <h3 className="text-lg font-serif font-semibold text-gold mb-4">Redakcia</h3>
-          <div className="space-y-3 text-gray-300 text-sm">
+          <div className="space-y-3 text-gray-700 text-sm">
             <p>
-              <strong className="text-white">Elena Strápková</strong><br />
+              <strong className="text-gray-900">Elena Strápková</strong><br />
               Šéfredaktorka
             </p>
             <p>
@@ -31,11 +31,11 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="bg-dark-card border border-dark-border rounded-xl p-6">
+        <div className="bg-cream-dark border border-gray-200 rounded-xl p-6">
           <h3 className="text-lg font-serif font-semibold text-gold mb-4">Vydavateľ</h3>
-          <div className="space-y-3 text-gray-300 text-sm">
+          <div className="space-y-3 text-gray-700 text-sm">
             <p>
-              <strong className="text-white">PRO PUBLISHING s. r. o.</strong>
+              <strong className="text-gray-900">PRO PUBLISHING s. r. o.</strong>
             </p>
             <p>
               Landererova 6<br />

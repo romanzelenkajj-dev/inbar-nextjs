@@ -28,11 +28,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
       <div className="mb-10">
-        <h1 className="text-3xl md:text-4xl font-serif font-bold text-white mb-2">
+        <h1 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-2">
           Vyhľadávanie
         </h1>
         {query && (
-          <p className="text-gray-400">
+          <p className="text-gray-600">
             Výsledky pre &ldquo;<span className="text-gold">{decodeHtmlEntities(query)}</span>&rdquo;
             {posts && <span className="text-gray-500"> &mdash; {posts.total} výsledkov</span>}
           </p>
@@ -41,7 +41,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
       {!query && (
         <div className="text-center py-20">
-          <svg className="w-16 h-16 mx-auto text-dark-border mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <p className="text-gray-500 text-lg">
@@ -70,7 +70,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <p className="text-gray-500 text-lg">
             Pre výraz &ldquo;{decodeHtmlEntities(query)}&rdquo; sme nenašli žiadne výsledky.
           </p>
-          <p className="text-gray-600 text-sm mt-2">
+          <p className="text-gray-500 text-sm mt-2">
             Skúste iný výraz alebo prehliadajte naše kategórie.
           </p>
         </div>
