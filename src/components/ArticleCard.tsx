@@ -57,8 +57,8 @@ export default function ArticleCard({
 
   if (variant === 'large') {
     return (
-      <Link href={`/${post.slug}`} className="group block relative overflow-hidden rounded-xl">
-        <div className="aspect-[16/9] md:aspect-[2/1] relative">
+      <Link href={`/${post.slug}`} className="group block relative overflow-hidden rounded-xl h-full">
+        <div className="aspect-[16/9] lg:aspect-auto lg:h-full relative">
           {imageUrl ? (
             <Image
               src={imageUrl}
