@@ -12,8 +12,8 @@ export default function HeroSection({ posts }: HeroSectionProps) {
   const hasSidePosts = sidePosts.length > 0;
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-8">
-      <div className={`grid grid-cols-1 ${hasSidePosts ? 'lg:grid-cols-3' : ''} gap-6 lg:h-[500px]`}>
+    <section className="max-w-7xl mx-auto px-4 pt-4 pb-3">
+      <div className={`grid grid-cols-1 ${hasSidePosts ? 'lg:grid-cols-3' : ''} gap-3 lg:gap-5 lg:h-[500px]`}>
         {/* Main large post */}
         <div className={`${hasSidePosts ? 'lg:col-span-2' : ''} h-full`}>
           <ArticleCard post={mainPost} variant="large" />
@@ -21,7 +21,7 @@ export default function HeroSection({ posts }: HeroSectionProps) {
 
         {/* Side posts */}
         {hasSidePosts && (
-          <div className={`grid ${sidePosts.length >= 2 ? 'grid-rows-2' : 'grid-rows-1'} gap-6 h-full`}>
+          <div className={`grid ${sidePosts.length >= 2 ? 'grid-rows-2' : 'grid-rows-1'} gap-3 lg:gap-5 h-full`}>
             {sidePosts.slice(0, 2).map((post) => (
               <div key={post.id} className="min-h-0">
                 <ArticleCard post={post} variant="hero-side" showExcerpt={false} />

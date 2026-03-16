@@ -92,33 +92,35 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       />
       {/* Hero Image */}
       {imageUrl && (
-        <div className="relative w-full min-h-[60vh] md:min-h-[65vh] flex flex-col">
-          <Image
-            src={imageUrl}
-            alt={imageAlt}
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent" style={{ top: '40%' }} />
-          <div className="absolute inset-0 bg-dark/20" />
-          {/* Title & categories inside hero */}
-          <div className="relative z-10 mt-auto max-w-3xl mx-auto w-full px-4 pb-10 pt-16">
-            <div className="flex flex-wrap gap-2 mb-4">
-              {categories.map((cat) => (
-                <Link
-                  key={cat.id}
-                  href={`/category/${cat.slug}`}
-                  className="text-xs font-medium tracking-widest uppercase text-gold hover:text-gold-light transition-colors"
-                >
-                  {cat.name}
-                </Link>
-              ))}
+        <div className="max-w-5xl mx-auto px-4 pt-6">
+          <div className="relative w-full aspect-[16/9] md:aspect-[2/1] rounded-2xl overflow-hidden">
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 960px"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent" style={{ top: '40%' }} />
+            <div className="absolute inset-0 bg-dark/15" />
+            {/* Title & categories inside hero */}
+            <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-10 pb-8 md:pb-10 pt-16">
+              <div className="flex flex-wrap gap-2 mb-3">
+                {categories.map((cat) => (
+                  <Link
+                    key={cat.id}
+                    href={`/category/${cat.slug}`}
+                    className="text-xs font-medium tracking-widest uppercase text-gold hover:text-gold-light transition-colors"
+                  >
+                    {cat.name}
+                  </Link>
+                ))}
+              </div>
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
+                {title}
+              </h1>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight">
-              {title}
-            </h1>
           </div>
         </div>
       )}

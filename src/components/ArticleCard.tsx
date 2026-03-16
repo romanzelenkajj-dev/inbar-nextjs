@@ -123,7 +123,7 @@ export default function ArticleCard({
   // Default card
   return (
     <Link href={`/${post.slug}`} className="group block">
-      <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
+      <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-3">
         {imageUrl ? (
           <Image
             src={imageUrl}
