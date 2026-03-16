@@ -64,7 +64,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     <article>
       {/* Hero Image */}
       {imageUrl && (
-        <div className="relative w-full h-[50vh] md:h-[65vh]">
+        <div className="relative w-full min-h-[60vh] md:min-h-[65vh] flex flex-col">
           <Image
             src={imageUrl}
             alt={imageAlt}
@@ -73,32 +73,32 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent" style={{ top: '40%' }} />
+          <div className="absolute inset-0 bg-dark/20" />
+          {/* Title & categories inside hero */}
+          <div className="relative z-10 mt-auto max-w-3xl mx-auto w-full px-4 pb-10 pt-16">
+            <div className="flex flex-wrap gap-2 mb-4">
+              {categories.map((cat) => (
+                <Link
+                  key={cat.id}
+                  href={`/category/${cat.slug}`}
+                  className="text-xs font-medium tracking-widest uppercase text-gold hover:text-gold-light transition-colors"
+                >
+                  {cat.name}
+                </Link>
+              ))}
+            </div>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight">
+              {title}
+            </h1>
+          </div>
         </div>
       )}
 
       {/* Article Content */}
-      <div className="max-w-3xl mx-auto px-4 -mt-32 relative z-10">
-        {/* Category Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {categories.map((cat) => (
-            <Link
-              key={cat.id}
-              href={`/category/${cat.slug}`}
-              className="text-xs font-medium tracking-widest uppercase text-gold hover:text-gold-light transition-colors"
-            >
-              {cat.name}
-            </Link>
-          ))}
-        </div>
-
-        {/* Title */}
-        <h1 className="text-3xl md:text-5xl font-serif font-bold text-white leading-tight mb-6">
-          {title}
-        </h1>
-
+      <div className="max-w-3xl mx-auto px-4 relative z-10">
         {/* Meta */}
-        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-8 pb-8 border-b border-gray-200">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mt-8 mb-8 pb-8 border-b border-gray-200">
           {authorName && <span className="text-gray-700">{authorName}</span>}
           <div className="ml-auto">
             <ShareButtons url={articleUrl} title={title} />
