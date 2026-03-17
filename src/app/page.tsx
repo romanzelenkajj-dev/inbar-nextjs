@@ -17,12 +17,19 @@ const websiteJsonLd = {
 };
 
 export default async function HomePage() {
+  // Fetch extra posts per category so we can filter out hero duplicates and still show 4
   const [latestPosts, drinkingPosts, diningPosts, livingPosts] = await Promise.all([
     getPosts(1, 3),
-    getPostsByCategory(6, 1, 4),
-    getPostsByCategory(12, 1, 4),
-    getPostsByCategory(13, 1, 4),
+    getPostsByCategory(6, 1, 8),
+    getPostsByCategory(12, 1, 8),
+    getPostsByCategory(13, 1, 8),
   ]);
+
+  // Exclude hero post IDs from category sections to avoid duplicates
+  const heroIds = new Set(latestPosts.posts.map((p) => p.id));
+  const filteredDrinking = drinkingPosts.posts.filter((p) => !heroIds.has(p.id)).slice(0, 4);
+  const filteredDining = diningPosts.posts.filter((p) => !heroIds.has(p.id)).slice(0, 4);
+  const filteredLiving = livingPosts.posts.filter((p) => !heroIds.has(p.id)).slice(0, 4);
 
   return (
     <>
@@ -36,17 +43,17 @@ export default async function HomePage() {
         <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
       </div>
 
-      <CategorySection title="Drinking" slug="drinking" posts={drinkingPosts.posts} />
+      <CategorySection title="Drinking" slug="drinking" posts={filteredDrinking} />
 
       <SponsorBanner size="medium" />
 
-      <CategorySection title="Dining" slug="dining" posts={diningPosts.posts} />
+      <CategorySection title="Dining" slug="dining" posts={filteredDining} />
 
       <div className="max-w-7xl mx-auto px-4">
         <div className="h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
       </div>
 
-      <CategorySection title="Living" slug="living" posts={livingPosts.posts} />
+      <CategorySection title="Living" slug="living" posts={filteredLiving} />
     </>
   );
 }
