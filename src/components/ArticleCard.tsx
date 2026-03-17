@@ -39,14 +39,14 @@ export default function ArticleCard({
           ) : (
             <div className="w-full h-full bg-dark-card" />
           )}
-          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-dark/80 via-dark/40 to-transparent z-10" />
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-dark/70 via-dark/30 to-transparent z-10" />
           <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
             {showCategory && firstCategory && (
               <span className="inline-block text-[10px] font-medium tracking-widest uppercase text-gold mb-1" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
                 {firstCategory.name}
               </span>
             )}
-            <h3 className="text-lg font-serif font-bold text-white leading-snug group-hover:text-gold transition-colors duration-300" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.7)' }}>
+            <h3 className="text-base sm:text-lg font-serif font-bold text-white leading-snug group-hover:text-gold transition-colors duration-300" style={{ textShadow: '0 2px 6px rgba(0,0,0,0.7)' }}>
               {title}
             </h3>
           </div>
@@ -147,7 +147,7 @@ export default function ArticleCard({
           {title}
         </h3>
         {showExcerpt && (
-          <p className="hidden sm:block text-sm text-gray-500 mt-1.5 line-clamp-2">
+          <p className="text-sm text-gray-500 mt-1.5 line-clamp-2">
             {excerpt}
           </p>
         )}

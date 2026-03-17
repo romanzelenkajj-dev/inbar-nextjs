@@ -32,6 +32,19 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     openGraph: {
       title: `${category.name} | ${SITE_NAME}`,
       description: category.description || `Články v kategórii ${category.name}`,
+      images: [
+        {
+          url: 'https://cms.inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
+          width: 600,
+          height: 200,
+          alt: SITE_NAME,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${category.name} | ${SITE_NAME}`,
+      description: category.description || `Články v kategórii ${category.name}`,
     },
   };
 }

@@ -32,31 +32,31 @@ export default function CookieConsent() {
     <div
       className="fixed bottom-0 left-0 right-0 z-50 animate-slide-up border-t border-dark-border bg-dark-lighter shadow-2xl"
     >
-      <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6 sm:py-5">
-        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-sans text-sm leading-relaxed text-gray-300 sm:text-base">
-            Táto stránka používa cookies na zlepšenie vášho zážitku. Prečítajte si naše{' '}
+      <div className="mx-auto max-w-6xl px-3 py-3 sm:px-6 sm:py-4">
+        <div className="flex items-center justify-between gap-3 sm:gap-4">
+          <p className="font-sans text-xs leading-snug text-gray-300 sm:text-sm sm:leading-relaxed">
+            Cookies na zlepšenie zážitku.{' '}
             <Link href="/ochrana-sukromia" className="text-gold underline underline-offset-2 hover:text-gold-light">
-              zásady ochrany súkromia
+              Súkromie
             </Link>{' '}
-            a{' '}
+            &{' '}
             <Link href="/cookies" className="text-gold underline underline-offset-2 hover:text-gold-light">
               cookies
             </Link>
             .
           </p>
-          <div className="flex shrink-0 gap-3">
+          <div className="flex shrink-0 gap-2 sm:gap-3">
             <button
               onClick={handleReject}
-              className="rounded-md border border-gray-500 px-4 py-2 text-sm font-medium text-gray-300 transition-colors hover:border-gray-300 hover:text-white"
+              className="rounded-md border border-gray-500 px-3 py-1.5 text-xs sm:text-sm font-medium text-gray-300 transition-colors hover:border-gray-300 hover:text-white"
             >
-              Odmietnuť
+              Nie
             </button>
             <button
               onClick={handleAccept}
-              className="rounded-md bg-gold px-4 py-2 text-sm font-semibold text-dark transition-colors hover:bg-gold-light"
+              className="rounded-md bg-gold px-3 py-1.5 text-xs sm:text-sm font-semibold text-dark transition-colors hover:bg-gold-light"
             >
-              Prijať cookies
+              Prijať
             </button>
           </div>
         </div>

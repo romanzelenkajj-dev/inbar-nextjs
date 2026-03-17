@@ -156,7 +156,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedPosts.map((relPost) => (
-              <ArticleCard key={relPost.id} post={relPost} showExcerpt={false} />
+              <ArticleCard key={relPost.id} post={relPost} showExcerpt={true} />
             ))}
           </div>
         </section>

@@ -22,9 +22,9 @@ export default function CategorySection({ title, slug, posts }: CategorySectionP
         </div>
         <Link
           href={`/category/${slug}`}
-          className="text-sm font-medium tracking-wider uppercase text-gold hover:text-gold-light transition-colors whitespace-nowrap"
+          className="text-xs font-semibold tracking-widest uppercase text-gold border border-gold/40 rounded-full px-4 py-1.5 hover:bg-gold hover:text-dark transition-all duration-300 whitespace-nowrap"
         >
-          Zobraziť všetky &rarr;
+          Zobraziť všetky
         </Link>
       </div>
 
