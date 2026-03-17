@@ -16,7 +16,7 @@ export default function AboutPage() {
         <h2>INBAR &amp; RESTAURANT</h2>
 
         <p>
-          InBar je slovenský online magazín venovaný svetu barov, reštaurácií a životného štýlu.
+          InBar&Restaurant je slovenský online magazín venovaný svetu barov, reštaurácií a životného štýlu.
           Prinášame vám inšpiráciu, rozhovory so šéfkuchármi a barmanmi, recenzie podnikov
           a najnovšie trendy zo sveta gastronómie.
         </p>
