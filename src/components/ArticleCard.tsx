@@ -147,7 +147,7 @@ export default function ArticleCard({
           {title}
         </h3>
         {showExcerpt && (
-          <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+          <p className="hidden sm:block text-sm text-gray-500 mt-1.5 line-clamp-2">
             {excerpt}
           </p>
         )}

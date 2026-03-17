@@ -30,7 +30,7 @@ export default function CategorySection({ title, slug, posts }: CategorySectionP
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         {posts.slice(0, 4).map((post) => (
-          <ArticleCard key={post.id} post={post} showExcerpt={false} />
+          <ArticleCard key={post.id} post={post} showExcerpt={true} />
         ))}
       </div>
     </section>
