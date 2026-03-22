@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InBar & Restaurant — Mediakit 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --dark: #1a1a1a;
+    --text: #333;
+    --light-text: #666;
+    --bg: #FAF8F5;
+    --white: #ffffff;
+    --border: #e8e4de;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    background: var(--dark);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1920&q=80') center/cover;
+    opacity: 0.25;
+  }
+
+  .hero > * { position: relative; z-index: 1; }
+
+  .hero-badge {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 48px;
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    padding: 8px 24px;
+  }
+
+  .hero-logo img {
+    height: 60px;
+    width: auto;
+    margin-bottom: 24px;
+    filter: brightness(1.1);
+  }
+
+  .hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+  }
+
+  .hero-tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(255,255,255,0.8);
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  .hero-year {
+    position: absolute;
+    bottom: 40px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--gold);
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .scroll-indicator span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .scroll-indicator::after {
+    content: '';
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0 24px;
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .nav-logo {
+    position: absolute;
+    left: 0;
+  }
+
+  .nav-logo img {
+    height: 28px;
+    width: auto;
+    opacity: 0.9;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    list-style: none;
+    overflow-x: auto;
+  }
+
+  nav a {
+    display: block;
+    padding: 18px 0;
+    color: #888;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    white-space: nowrap;
+  }
+
+  nav a:hover { color: var(--gold); }
+
+  /* ---- PHOTO BANNER ---- */
+  .photo-banner {
+    width: 100%;
+    height: 50vh;
+    min-height: 350px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .photo-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+  }
+
+  .photo-banner .banner-text {
+    position: absolute;
+    bottom: 48px;
+    left: 48px;
+    z-index: 1;
+    color: #fff;
+  }
+
+  .photo-banner .banner-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .photo-banner .banner-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  /* ---- SECTIONS ---- */
+  section { padding: 80px 24px; }
+
+  .container { max-width: 960px; margin: 0 auto; }
+  .container-wide { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .section-title em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .divider {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin: 20px 0 36px;
+  }
+
+  .white-section { background: var(--white); }
+
+  /* ---- ABOUT ---- */
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-text {
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--text);
+    font-weight: 300;
+  }
+
+  .about-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  /* ---- STATS ---- */
+  .stats-bar {
+    background: var(--dark);
+    padding: 48px 24px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .stat-item .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-item .stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ---- AUDIENCE ---- */
+  .audience-text {
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--text);
+    font-weight: 300;
+    max-width: 680px;
+  }
+
+  /* ---- RUBRIC SECTIONS ---- */
+  .rubric {
+    margin-bottom: 72px;
+    padding-bottom: 72px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .rubric:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+
+  .rubric-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .rubric-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--dark);
+  }
+
+  .rubric-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .rubric-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 48px;
+  }
+
+  .rubric-item {
+    padding: 16px 0;
+  }
+
+  .rubric-item h4 {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .rubric-item p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--light-text);
+    font-weight: 300;
+  }
+
+  /* ---- SPECS ---- */
+  .specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+
+  .spec-group h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 24px;
+    color: var(--dark);
+  }
+
+  .spec-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  .spec-row .label { font-weight: 500; color: var(--dark); }
+  .spec-row .value { color: var(--light-text); font-weight: 300; text-align: right; }
+
+  /* ---- SCHEDULE ---- */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .schedule-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 10px 0;
+    border-bottom: 2px solid var(--dark);
+  }
+
+  .schedule-table td {
+    padding: 14px 0;
+    font-size: 14px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ---- PRICING ---- */
+  .price-section { margin-bottom: 40px; }
+  .price-section:last-child { margin-bottom: 0; }
+
+  .price-section h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--dark);
+  }
+
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .price-row .item { font-size: 14px; color: var(--text); }
+
+  .price-row .price {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+    white-space: nowrap;
+    margin-left: 16px;
+  }
+
+  .price-note {
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--light-text);
+    font-style: italic;
+  }
+
+  /* ---- AD SIZES ---- */
+  .ad-sizes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 28px;
+  }
+
+  .ad-size-card {
+    text-align: center;
+    padding: 24px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+  }
+
+  .ad-size-visual {
+    background: var(--gold);
+    margin: 0 auto 14px;
+    opacity: 0.6;
+  }
+
+  .ad-size-card .name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+
+  .ad-size-card .dims {
+    font-size: 12px;
+    color: var(--light-text);
+  }
+
+  .ad-params {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--text);
+    font-weight: 300;
+  }
+
+  .ad-params strong { font-weight: 600; }
+
+  /* ---- CONTACT ---- */
+  .contact-section {
+    background: var(--dark);
+    color: #fff;
+    padding: 80px 24px;
+  }
+
+  .contact-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .contact-top-left .section-label { margin-bottom: 8px; }
+  .contact-top-left .section-title { color: #fff; }
+
+  .contact-top-logo img {
+    height: 40px;
+    opacity: 0.7;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .contact-block h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .contact-block .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .contact-block .detail {
+    font-size: 14px;
+    color: #999;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .contact-block a {
+    color: #999;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .contact-block a:hover { color: var(--gold); }
+
+  .contact-company {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .contact-company p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.8;
+  }
+
+  .contact-company a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: #111;
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: #444;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 768px) {
+    .about-layout,
+    .specs-grid,
+    .contact-grid,
+    .rubric-items {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .ad-sizes-grid { grid-template-columns: 1fr 1fr; }
+    nav ul { gap: 16px; }
+    nav a { font-size: 10px; letter-spacing: 1px; }
+    section { padding: 60px 20px; }
+    .photo-banner { height: 35vh; min-height: 250px; }
+    .photo-banner .banner-text { left: 24px; bottom: 24px; }
+    .contact-top { flex-direction: column; text-align: center; gap: 24px; }
+    .nav-logo { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Mediakit 2026</div>
+  <div class="hero-logo">
+    <img src="https://inbar.sk/INBAR-LOGO-WEB-WHITE.png" alt="InBar & Restaurant">
+  </div>
+  <div class="hero-subtitle">dining &middot; drinking &middot; living</div>
+  <div class="hero-tagline">
+    Lifestylový časopis o kvalitnej gastronómii, nápojovej kultúre a aktívnom životnom štýle.
+  </div>
+  <div class="scroll-indicator"><span></span></div>
+  <div class="hero-year">2026</div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="https://inbar.sk/INBAR-LOGO-WEB-WHITE.png" alt="InBar">
+    </div>
+    <ul>
+      <li><a href="#about">O magazíne</a></li>
+      <li><a href="#audience">Čitatelia</a></li>
+      <li><a href="#sections">Rubriky</a></li>
+      <li><a href="#specs">Špecifikácie</a></li>
+      <li><a href="#pricing">Cenník</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-layout">
+      <div>
+        <div class="section-label">O magazíne</div>
+        <h2 class="section-title">InBar <em>&</em> Restaurant</h2>
+        <div class="divider"></div>
+        <p class="about-text">
+          Lifestylový časopis, ktorého cieľovou skupinou sú fanúšikovia kvalitnej gastronómie a aktívneho životného štýlu, profesionáli v oblasti HoReCa biznisu, ale aj široká verejnosť.
+        </p>
+        <br>
+        <p class="about-text">
+          Čitateľov oboznamujeme s najnovšími trendmi z oblasti gastronómie, nápojovej kultúry, hotelierstva, ale aj wellnessu, dizajnu či architektúry. Na gastronómiu a životný štýl máme jasný názor a riadime sa dobrým vkusom.
+        </p>
+      </div>
+      <img class="about-image" src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&q=80" alt="Fine dining">
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number">15 000</div>
+      <div class="stat-label">Náklad</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">56+</div>
+      <div class="stat-label">Strán</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">2×</div>
+      <div class="stat-label">Ročne</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">HoReCa</div>
+      <div class="stat-label">Segment</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO: COCKTAIL -->
+<div class="photo-banner" style="background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=1920&q=80');">
+  <div class="banner-text">
+    <div class="banner-label">Cieľová skupina</div>
+    <div class="banner-title">Naši čitatelia</div>
+  </div>
+</div>
+
+<!-- AUDIENCE -->
+<section id="audience">
+  <div class="container">
+    <p class="audience-text">
+      Ľudia v produktívnom veku so záujmom o kvalitnú gastronómiu a aktívny životný štýl, majitelia gastronomických zariadení, hoteliéri, manažéri, šéfkuchári a barmani, ktorí chcú byť informovaní o svetových trendoch. Čitatelia so záujmom dozvedieť sa viac o tom, čo v súčasnosti hýbe svetovou gastronomickou, barovou a hotelovou scénou.
+    </p>
+  </div>
+</section>
+
+<!-- PHOTO: DINING -->
+<div class="photo-banner" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80');">
+  <div class="banner-text">
+    <div class="banner-label">Pravidelné rubriky</div>
+    <div class="banner-title">Obsah magazínu</div>
+  </div>
+</div>
+
+<!-- RUBRIC SECTIONS -->
+<section id="sections" class="white-section">
+  <div class="container">
+
+    <!-- DINING -->
+    <div class="rubric">
+      <div class="rubric-header"><h3>Dining</h3></div>
+      <div class="rubric-items">
+        <div class="rubric-item">
+          <h4>Sezóna</h4>
+          <p>Tri recepty od troch rôznych šéfkuchárov s jednou ingredienciou, ktorá je v aktuálnej sezóne dominantná.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Kulinárske lekcie</h4>
+          <p>Škola varenia s top šéfkuchármi Slovenska. Poradíme vám, ako si aj doma pripravíte špeciality reštauračnej kvality.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Profil šéfkuchára</h4>
+          <p>Kto sú najlepší šéfkuchári Slovenska? Čo stojí za ich úspechom? Aký je ich kulinársky štýl a akí sú v súkromí?</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Rozhovor</h4>
+          <p>Michelinovskí šéfkuchári, uznávaní someliéri, úspešní hoteliéri — respondenti nosného rozhovoru čísla.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Test</h4>
+          <p>Testujeme reštaurácie, bary, hotely, ale aj nové produkty a služby.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Nové reštaurácie</h4>
+          <p>Čo je nové na slovenskej reštauračnej scéne? Aké nové kaviarne či bistrá otvorili v blízkom okolí?</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRINKING -->
+    <div class="rubric">
+      <div class="rubric-header"><h3>Drinking</h3></div>
+      <div class="rubric-items">
+        <div class="rubric-item">
+          <h4>Bar menu</h4>
+          <p>Príbehy netradičných destilátov, zaujímavých fortifikovaných vín, menej známych charakteristických nápojov jednotlivých krajín.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Whisky</h4>
+          <p>Čo momentálne hýbe svetom jedného z najpopulárnejších destilátov sveta prostredníctvom fundovaných článkov whisky entuziastov.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Víno</h4>
+          <p>Predstavujeme vína, ktoré musíte ochutnať, a vinárov, ktorí za nimi stoja.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Pivo</h4>
+          <p>Ležiak, stout alebo ale? Naservírujeme presne tak, ako sa patrí, spolu s informáciami, ktoré vás budú zaujímať.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Káva</h4>
+          <p>Všetko o najpredávanejšej komodite na svete, od zbierania na farme až po metódy finálnej prípravy.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Event</h4>
+          <p>Sme pri všetkom dôležitom, čo sa na slovenskej nápojovej scéne deje a chceme to sprostredkovať aj našim čitateľom.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIVING -->
+    <div class="rubric">
+      <div class="rubric-header"><h3>Living</h3></div>
+      <div class="rubric-items">
+        <div class="rubric-item">
+          <h4>Dizajn</h4>
+          <p>Progresívne nápady, dizajnové hotely, originálne interiéry gastronomických prevádzok vo vizuálne zameraných reportážach.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Wellness</h4>
+          <p>Trendy v oblasti wellnessu a relaxu, rozhovory s odborníkmi, tipy na tradičné aj netradičné formy wellnessu.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Hotel</h4>
+          <p>Inšpiratívne príbehy slávnych historických hotelov, ale aj tých moderných, ktoré sa dokázali odlíšiť a uspieť.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Tip na víkend</h4>
+          <p>Známe aj menej známe destinácie na Slovensku a v blízkom okolí.</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Jeden deň v jednom meste</h4>
+          <p>24 hodín vo vybranej svetovej metropole. Kam ísť ráno na kávu a večer na drink a čo vidieť medzi tým?</p>
+        </div>
+        <div class="rubric-item">
+          <h4>Dotazník biznismena</h4>
+          <p>Spovedáme osobnosť z oblasti gastronomického alebo hotelového biznisu.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO: HOTEL/LIVING -->
+<div class="photo-banner" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80');">
+  <div class="banner-text">
+    <div class="banner-label">Pre inzerentov</div>
+    <div class="banner-title">Technické informácie</div>
+  </div>
+</div>
+
+<!-- SPECS + SCHEDULE -->
+<section id="specs">
+  <div class="container">
+    <div class="specs-grid">
+      <div class="spec-group">
+        <div class="section-label">Technické špecifikácie</div>
+        <h3>Print</h3>
+        <div class="divider"></div>
+        <div class="spec-row"><span class="label">Periodicita</span><span class="value">Štvrťročník</span></div>
+        <div class="spec-row"><span class="label">Formát po oreze</span><span class="value">230 × 300 mm</span></div>
+        <div class="spec-row"><span class="label">Papier obálka</span><span class="value">250 g NPL Quatro gloss + Soft touch lamino</span></div>
+        <div class="spec-row"><span class="label">Vnútro</span><span class="value">90 g BO-IQ print</span></div>
+        <div class="spec-row"><span class="label">Počet strán</span><span class="value">56 + 4 obálka</span></div>
+        <div class="spec-row"><span class="label">Väzba</span><span class="value">V-2</span></div>
+        <div class="spec-row"><span class="label">Farebnosť</span><span class="value">Plná farba (4 + 4)</span></div>
+        <div class="spec-row"><span class="label">Distribúcia</span><span class="value">Mediaprint – Kapa Pressegrosso, a.s.</span></div>
+        <div class="spec-row"><span class="label">Náklad</span><span class="value">15 000 ks</span></div>
+      </div>
+
+      <div class="spec-group">
+        <div class="section-label">Harmonogram</div>
+        <h3>Vydania 2026</h3>
+        <div class="divider"></div>
+        <table class="schedule-table">
+          <thead>
+            <tr><th>Číslo</th><th>Uzávierka</th><th>Tlač</th><th>Distribúcia</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1/2026</td><td>6. 4.</td><td>13. 4.</td><td>20. 4.</td></tr>
+            <tr><td>2/2026</td><td>16. 9.</td><td>23. 9.</td><td>30. 9.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="white-section">
+  <div class="container">
+    <div class="section-label">Cenník inzercie</div>
+    <h2 class="section-title">Inzercia</h2>
+    <div class="divider"></div>
+
+    <div class="specs-grid">
+      <div>
+        <div class="price-section">
+          <h4>Štandardné pozície</h4>
+          <div class="price-row"><span class="item">1/1 strana</span><span class="price">3 500 €</span></div>
+          <div class="price-row"><span class="item">1/2 strany</span><span class="price">1 900 €</span></div>
+          <div class="price-row"><span class="item">1/3 strany</span><span class="price">1 400 €</span></div>
+          <div class="price-row"><span class="item">1/4 strany</span><span class="price">1 100 €</span></div>
+        </div>
+
+        <div class="price-section">
+          <h4>Preferované pozície</h4>
+          <div class="price-row"><span class="item">Prvá 2/1 strana (2. obálka + 1. strana)</span><span class="price">7 000 €</span></div>
+          <div class="price-row"><span class="item">Štandardná 2/1 strana (vnútri časopisu)</span><span class="price">6 000 €</span></div>
+        </div>
+
+        <div class="price-section">
+          <h4>PR</h4>
+          <div class="price-row"><span class="item">1/1 strana</span><span class="price">3 500 €</span></div>
+          <div class="price-row"><span class="item">1/2 strany</span><span class="price">1 900 €</span></div>
+          <div class="price-row"><span class="item">1/3 strany</span><span class="price">1 400 €</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="price-section">
+          <h4>Obálka</h4>
+          <div class="price-row"><span class="item">Druhá 1/1 strana obálky</span><span class="price">4 500 €</span></div>
+          <div class="price-row"><span class="item">Tretia 1/1 strana obálky</span><span class="price">4 500 €</span></div>
+          <div class="price-row"><span class="item">Štvrtá 1/1 strana obálky</span><span class="price">5 500 €</span></div>
+          <div class="price-row"><span class="item">V-gate 2/1</span><span class="price">8 000 €</span></div>
+        </div>
+
+        <div class="price-section">
+          <h4>Storno poplatky</h4>
+          <div class="price-row"><span class="item">Do 14 dní pred uzávierkou</span><span class="price">50 %</span></div>
+          <div class="price-row"><span class="item">Po uzávierke objednávok</span><span class="price">100 %</span></div>
+        </div>
+
+        <p class="price-note">Ceny sú uvedené bez DPH.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AD SIZES -->
+<section>
+  <div class="container">
+    <div class="section-label">Parametre inzercie</div>
+    <h2 class="section-title">Rozmery inzercie</h2>
+    <div class="divider"></div>
+
+    <div class="ad-params">
+      <p><strong>V elektronickej podobe:</strong> v dátovom formáte PDF s rozlíšením obrázkov 300 DPI. PDF s menším rozlíšením považujeme za náhlad a vraciame naspäť vo farbách CMYK. PDF nesmie obsahovať: priame farby, RGB, LAB, ICC profily, Overprint (okrem 100 % čiernej), vlasové linky a písmo menšie ako 6 b. PDF s orezovými znakmi (ofset orezových značiek min. 3 mm a viac), prípadne bez orezových značiek (s dodržaným orezom min. 3 mm). Text inzercie odporúčame neumiestňovať menej ako 5 mm od okraja orezu.</p>
+    </div>
+
+    <div class="ad-sizes-grid">
+      <div class="ad-size-card">
+        <div class="ad-size-visual" style="width:80px;height:104px;"></div>
+        <div class="name">1/1</div>
+        <div class="dims">230 × 300 mm + orez 3 mm</div>
+      </div>
+      <div class="ad-size-card">
+        <div class="ad-size-visual" style="width:80px;height:52px;"></div>
+        <div class="name">1/2</div>
+        <div class="dims">230 × 150 mm + orez 3 mm</div>
+      </div>
+      <div class="ad-size-card">
+        <div class="ad-size-visual" style="width:40px;height:104px;"></div>
+        <div class="name">1/2</div>
+        <div class="dims">115 × 300 mm + orez 3 mm</div>
+      </div>
+      <div class="ad-size-card">
+        <div class="ad-size-visual" style="width:80px;height:35px;"></div>
+        <div class="name">1/3</div>
+        <div class="dims">230 × 100 mm + orez 3 mm</div>
+      </div>
+      <div class="ad-size-card">
+        <div class="ad-size-visual" style="width:27px;height:104px;"></div>
+        <div class="name">1/3</div>
+        <div class="dims">77 × 300 mm + orez 3 mm</div>
+      </div>
+      <div class="ad-size-card">
+        <div class="ad-size-visual" style="width:40px;height:52px;"></div>
+        <div class="name">1/4</div>
+        <div class="dims">115 × 150 mm + orez 3 mm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-top">
+      <div class="contact-top-left">
+        <div class="section-label">Kontakt</div>
+        <h2 class="section-title" style="color:#fff">Spojte sa s nami</h2>
+      </div>
+      <div class="contact-top-logo">
+        <img src="https://inbar.sk/INBAR-LOGO-WEB-WHITE.png" alt="InBar & Restaurant">
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h4>Šéfredaktorka</h4>
+        <div class="name">Alexandra Tinková</div>
+        <div class="detail">
+          <a href="tel:+421903897411">+421 903 897 411</a><br>
+          <a href="mailto:alexandra.tinkova@propublishing.sk">alexandra.tinkova@propublishing.sk</a>
+        </div>
+      </div>
+      <div class="contact-block">
+        <h4>Obchod a marketing</h4>
+        <div class="name">Roman Šimoník</div>
+        <div class="detail">
+          <a href="tel:+421917694771">+421 917 694 771</a><br>
+          <a href="mailto:roman.simonik@propublishing.sk">roman.simonik@propublishing.sk</a>
+        </div>
+        <br>
+        <div class="name">Martin Obert</div>
+        <div class="detail">
+          <a href="tel:+421905343812">+421 905 343 812</a><br>
+          <a href="mailto:martinobert@propublishing.sk">martinobert@propublishing.sk</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-company">
+      <p>
+        PRO PUBLISHING, s. r. o. &middot; Landererova 6, 811 09 Bratislava<br>
+        IČO: 52233570 &middot; DIČ: 2120937280<br><br>
+        <a href="https://www.inbar.sk">www.inbar.sk</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 InBar & Restaurant. Všetky práva vyhradené.
+</footer>
+
+</body>
+</html>
