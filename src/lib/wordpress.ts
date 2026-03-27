@@ -4,7 +4,7 @@ const API_BASE = 'https://cms.inbar.sk/wp-json/wp/v2';
 
 export const EXCLUDED_SLUGS = ['masterclass-guest-shift-three-cents-v-bratislave'];
 
-async function fetchAPI<T>(endpoint: string, revalidate = 3600): Promise<T> {
+async function fetchAPI<T>(endpoint: string, revalidate = 60): Promise<T> {
   const res = await fetch(`${API_BASE}${endpoint}`, {
     next: { revalidate },
   });
@@ -14,7 +14,7 @@ async function fetchAPI<T>(endpoint: string, revalidate = 3600): Promise<T> {
   return res.json();
 }
 
-async function fetchAPIWithHeaders(endpoint: string, revalidate = 3600) {
+async function fetchAPIWithHeaders(endpoint: string, revalidate = 60) {
   const res = await fetch(`${API_BASE}${endpoint}`, {
     next: { revalidate },
   });
