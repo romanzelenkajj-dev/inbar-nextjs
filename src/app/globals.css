@@ -79,6 +79,16 @@
   .wp-content figure {
     @apply my-6;
   }
+  /* WP classic-editor captioned figures emit inline `style="width: NNNpx"`
+     on the <figure>, varying per attachment — some bleed past the text
+     column, others fall short. Normalize every captioned figure to fill
+     the prose column with its caption centered underneath. */
+  .wp-content figure.wp-caption {
+    width: 100% !important;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .wp-content figcaption {
     @apply text-sm text-gray-500 text-center mt-2;
   }
