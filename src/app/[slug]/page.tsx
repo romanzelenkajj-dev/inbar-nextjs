@@ -128,7 +128,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       {/* Article Content */}
       <div className="max-w-3xl mx-auto px-4 relative z-10">
         {/* Meta */}
-        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mt-8 mb-8 pb-8 border-b border-gray-200">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mt-8 mb-8">
           {authorName && <span className="text-gray-700">{authorName}</span>}
           <div className="ml-auto">
             <ShareButtons url={articleUrl} title={title} />
@@ -142,7 +142,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         />
 
         {/* Bottom Share */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
+        <div className="mt-12">
           <ShareButtons url={articleUrl} title={title} />
         </div>
       </div>

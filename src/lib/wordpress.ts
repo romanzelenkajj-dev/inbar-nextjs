@@ -128,10 +128,21 @@ export function getFeaturedImageAlt(post: WPPost): string {
   return media?.alt_text || decodeHtmlEntities(post.title.rendered);
 }
 
+const HIDDEN_AUTHOR_KEYS = new Set([
+  'roman',
+  'inbar',
+  'i&r',
+  'inbar redakcia',
+]);
+
 export function getAuthorName(post: WPPost): string | null {
   const author = post._embedded?.author?.[0];
-  const name = author?.name || null;
-  if (!name || name === 'InBar Redakcia') return null;
+  const rawName = author?.name;
+  if (!rawName) return null;
+  const name = decodeHtmlEntities(rawName).trim();
+  const slug = (author?.slug || '').trim();
+  if (HIDDEN_AUTHOR_KEYS.has(name.toLowerCase())) return null;
+  if (HIDDEN_AUTHOR_KEYS.has(slug.toLowerCase())) return null;
   return name;
 }
 

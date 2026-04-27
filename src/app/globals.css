@@ -58,6 +58,12 @@
   .wp-content img {
     @apply rounded-lg my-6 w-full h-auto;
   }
+  /* PhotoSwipe gallery containers ship with opacity:0.1 from the WP plugin
+     and only become visible after its JS adds .photoswipe_showme. That JS
+     never runs on the Next.js frontend, so force the gallery visible. */
+  .wp-content .psgal {
+    opacity: 1 !important;
+  }
   .wp-content blockquote {
     @apply border-l-4 border-gold pl-6 py-2 my-6 italic text-gray-500;
   }
