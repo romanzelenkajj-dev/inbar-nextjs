@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
   getPostBySlug,
@@ -8,7 +7,6 @@ import {
   getFeaturedImageUrl,
   getFeaturedImageAlt,
   getAuthorName,
-  getPostCategories,
   decodeHtmlEntities,
   rewriteMediaUrls,
 } from '@/lib/wordpress';
@@ -61,7 +59,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const imageUrl = getFeaturedImageUrl(post);
   const imageAlt = getFeaturedImageAlt(post);
   const authorName = getAuthorName(post);
-  const categories = getPostCategories(post);
   const relatedPosts = await getRelatedPosts(post.categories, post.id, 4);
   const articleUrl = `${SITE_URL}/${post.slug}`;
 
@@ -104,19 +101,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent" style={{ top: '40%' }} />
             <div className="absolute inset-0 bg-dark/15" />
-            {/* Title & categories inside hero */}
+            {/* Title inside hero */}
             <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-10 pb-8 md:pb-10 pt-16">
-              <div className="flex flex-wrap gap-2 mb-3">
-                {categories.map((cat) => (
-                  <Link
-                    key={cat.id}
-                    href={`/category/${cat.slug}`}
-                    className="text-xs font-medium tracking-widest uppercase text-gold hover:text-gold-light transition-colors"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
-              </div>
               <h1 className="text-2xl md:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
                 {title}
               </h1>
