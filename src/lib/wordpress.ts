@@ -63,6 +63,19 @@ export async function getPostsByCategory(
   return { posts, totalPages, total };
 }
 
+// Slug-based variant — slugs are stable across CMS instances; numeric IDs
+// are not (the WP Importer reassigns them on import). Resolves slug → id
+// via getCategoryBySlug, then delegates to getPostsByCategory.
+export async function getPostsByCategorySlug(
+  slug: string,
+  page = 1,
+  perPage = 12
+): Promise<PaginatedPosts> {
+  const category = await getCategoryBySlug(slug);
+  if (!category) return { posts: [], totalPages: 0, total: 0 };
+  return getPostsByCategory(category.id, page, perPage);
+}
+
 export async function searchPosts(query: string, page = 1, perPage = 12): Promise<PaginatedPosts> {
   const fetchCount = perPage + EXCLUDED_SLUGS.length;
   const { data, totalPages, total } = await fetchAPIWithHeaders(

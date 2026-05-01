@@ -1,4 +1,4 @@
-import { getPosts, getPostsByCategory } from '@/lib/wordpress';
+import { getPosts, getPostsByCategorySlug } from '@/lib/wordpress';
 import HeroSection from '@/components/HeroSection';
 import CategorySection from '@/components/CategorySection';
 import SponsorBanner from '@/components/SponsorBanner';
@@ -17,12 +17,14 @@ const websiteJsonLd = {
 };
 
 export default async function HomePage() {
-  // Fetch extra posts per category so we can filter out hero duplicates and still show 4
+  // Fetch extra posts per category so we can filter out hero duplicates and still show 4.
+  // Use slugs, not numeric IDs — IDs are reassigned by the WP Importer when content
+  // is migrated to a new CMS instance, so they aren't stable across environments.
   const [latestPosts, drinkingPosts, diningPosts, livingPosts] = await Promise.all([
     getPosts(1, 3),
-    getPostsByCategory(6, 1, 8),
-    getPostsByCategory(12, 1, 8),
-    getPostsByCategory(13, 1, 8),
+    getPostsByCategorySlug('drinking', 1, 8),
+    getPostsByCategorySlug('dining', 1, 8),
+    getPostsByCategorySlug('living', 1, 8),
   ]);
 
   // Exclude hero post IDs from category sections to avoid duplicates
