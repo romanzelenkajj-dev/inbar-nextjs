@@ -8,6 +8,7 @@ import {
   getCategories,
   decodeHtmlEntities,
   EXCLUDED_SLUGS,
+  WP_API_URL,
 } from '@/lib/wordpress';
 import { SITE_NAME, SITE_URL } from '@/lib/utils';
 import CategoryArticleGrid from '@/components/CategoryArticleGrid';
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
       description: category.description || `Články v kategórii ${category.name}`,
       images: [
         {
-          url: 'https://cms.inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
+          url: `${WP_API_URL}/app/uploads/2020/03/INBAR-LOGO-WEB.png`,
           width: 600,
           height: 200,
           alt: SITE_NAME,
@@ -56,7 +57,7 @@ async function getPostsFromMultipleCategories(
   perPage: number
 ): Promise<PaginatedPosts> {
   const res = await fetch(
-    `https://cms.inbar.sk/wp-json/wp/v2/posts?categories=${categoryIds.join(',')}&per_page=${perPage}&page=${page}&_embed`,
+    `${WP_API_URL}/wp-json/wp/v2/posts?categories=${categoryIds.join(',')}&per_page=${perPage}&page=${page}&_embed`,
     { next: { revalidate: 60 } }
   );
   if (!res.ok) {

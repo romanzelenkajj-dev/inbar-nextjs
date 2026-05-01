@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/utils';
+import { WP_API_URL } from '@/lib/wordpress';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieConsent from '@/components/CookieConsent';
 import './globals.css';
+
+const LOGO_URL = `${WP_API_URL}/app/uploads/2020/03/INBAR-LOGO-WEB.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -20,7 +23,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: 'https://cms.inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
+        url: LOGO_URL,
         width: 600,
         height: 200,
         alt: SITE_NAME,
@@ -44,7 +47,7 @@ const organizationJsonLd = {
   '@type': 'Organization',
   name: SITE_NAME,
   url: SITE_URL,
-  logo: 'https://cms.inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
+  logo: LOGO_URL,
 };
 
 export default function RootLayout({

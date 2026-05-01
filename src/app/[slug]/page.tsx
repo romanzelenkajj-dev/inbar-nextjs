@@ -11,6 +11,7 @@ import {
   getPostCategories,
   decodeHtmlEntities,
   rewriteMediaUrls,
+  WP_API_URL,
 } from '@/lib/wordpress';
 import { stripHtml, truncateText, SITE_URL, SITE_NAME } from '@/lib/utils';
 import ShareButtons from '@/components/ShareButtons';
@@ -78,7 +79,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://cms.inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
+        url: `${WP_API_URL}/app/uploads/2020/03/INBAR-LOGO-WEB.png`,
       },
     },
     mainEntityOfPage: articleUrl,

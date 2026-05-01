@@ -1,6 +1,13 @@
 import { WPPost, WPCategory, WPPage, CategoryWithChildren, PaginatedPosts } from './types';
 
-const API_BASE = 'https://cms.inbar.sk/wp-json/wp/v2';
+// Single source of truth for the WordPress CMS base URL.
+// Override via NEXT_PUBLIC_WP_API_URL on Vercel (e.g. preview env) to point
+// at cms-new.inbar.sk during migration testing. Default keeps prod on
+// cms.inbar.sk so behavior is unchanged when the env is unset.
+export const WP_API_URL =
+  process.env.NEXT_PUBLIC_WP_API_URL ?? 'https://cms.inbar.sk';
+
+const API_BASE = `${WP_API_URL}/wp-json/wp/v2`;
 
 export const EXCLUDED_SLUGS = ['masterclass-guest-shift-three-cents-v-bratislave'];
 
@@ -108,11 +115,11 @@ export async function getPageBySlug(slug: string): Promise<WPPage | null> {
 }
 
 // Media URL rewriting — once inbar.sk points to Vercel, WordPress uploads
-// must be served from cms.inbar.sk instead.
+// must be served from the CMS host instead.
 export function rewriteMediaUrls(html: string): string {
   return html.replace(
     /https:\/\/inbar\.sk\/app\/uploads\//g,
-    'https://cms.inbar.sk/app/uploads/'
+    `${WP_API_URL}/app/uploads/`
   );
 }
 
