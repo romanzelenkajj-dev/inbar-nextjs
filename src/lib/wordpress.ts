@@ -1,6 +1,13 @@
 import { WPPost, WPCategory, WPPage, CategoryWithChildren, PaginatedPosts } from './types';
 
-const API_BASE = 'https://cms.inbar.sk/wp-json/wp/v2';
+// Single source of truth for the WordPress CMS base URL.
+// Override via NEXT_PUBLIC_WP_API_URL on Vercel (e.g. preview env) to point
+// at cms-new.inbar.sk during migration testing. Default keeps prod on
+// cms.inbar.sk so behavior is unchanged when the env is unset.
+export const WP_API_URL =
+  process.env.NEXT_PUBLIC_WP_API_URL ?? 'https://cms.inbar.sk';
+
+const API_BASE = `${WP_API_URL}/wp-json/wp/v2`;
 
 export const EXCLUDED_SLUGS = ['masterclass-guest-shift-three-cents-v-bratislave'];
 
@@ -56,6 +63,19 @@ export async function getPostsByCategory(
   return { posts, totalPages, total };
 }
 
+// Slug-based variant — slugs are stable across CMS instances; numeric IDs
+// are not (the WP Importer reassigns them on import). Resolves slug → id
+// via getCategoryBySlug, then delegates to getPostsByCategory.
+export async function getPostsByCategorySlug(
+  slug: string,
+  page = 1,
+  perPage = 12
+): Promise<PaginatedPosts> {
+  const category = await getCategoryBySlug(slug);
+  if (!category) return { posts: [], totalPages: 0, total: 0 };
+  return getPostsByCategory(category.id, page, perPage);
+}
+
 export async function searchPosts(query: string, page = 1, perPage = 12): Promise<PaginatedPosts> {
   const fetchCount = perPage + EXCLUDED_SLUGS.length;
   const { data, totalPages, total } = await fetchAPIWithHeaders(
@@ -108,11 +128,11 @@ export async function getPageBySlug(slug: string): Promise<WPPage | null> {
 }
 
 // Media URL rewriting — once inbar.sk points to Vercel, WordPress uploads
-// must be served from cms.inbar.sk instead.
+// must be served from the CMS host instead.
 export function rewriteMediaUrls(html: string): string {
   return html.replace(
     /https:\/\/inbar\.sk\/app\/uploads\//g,
-    'https://cms.inbar.sk/app/uploads/'
+    `${WP_API_URL}/app/uploads/`
   );
 }
 

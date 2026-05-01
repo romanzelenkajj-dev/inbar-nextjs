@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import ArticleCard from '@/components/ArticleCard';
 import { WPPost } from '@/lib/types';
+import { WP_API_URL } from '@/lib/wordpress';
 
 const EXCLUDED_SLUGS = ['masterclass-guest-shift-three-cents-v-bratislave'];
 
@@ -37,7 +38,7 @@ export default function CategoryArticleGrid({
 
     try {
       const res = await fetch(
-        `https://cms.inbar.sk/wp-json/wp/v2/posts?categories=${categoryIds.join(',')}&per_page=${perPage}&page=${nextPage}&_embed`
+        `${WP_API_URL}/wp-json/wp/v2/posts?categories=${categoryIds.join(',')}&per_page=${perPage}&page=${nextPage}&_embed`
       );
 
       if (!res.ok) {

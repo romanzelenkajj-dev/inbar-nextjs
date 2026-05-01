@@ -5,6 +5,10 @@ import Footer from '@/components/Footer';
 import CookieConsent from '@/components/CookieConsent';
 import './globals.css';
 
+// Brand asset — must be an absolute URL for OG / JSON-LD consumers
+// (social scrapers, search engines fetch out of context).
+const LOGO_URL = 'https://inbar.sk/inbar-logo-web.png';
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -20,7 +24,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: 'https://cms.inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
+        url: LOGO_URL,
         width: 600,
         height: 200,
         alt: SITE_NAME,
@@ -44,7 +48,7 @@ const organizationJsonLd = {
   '@type': 'Organization',
   name: SITE_NAME,
   url: SITE_URL,
-  logo: 'https://cms.inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
+  logo: LOGO_URL,
 };
 
 export default function RootLayout({

@@ -78,7 +78,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://cms.inbar.sk/app/uploads/2020/03/INBAR-LOGO-WEB.png',
+        url: 'https://inbar.sk/inbar-logo-web.png',
       },
     },
     mainEntityOfPage: articleUrl,

@@ -25,11 +25,12 @@ export function truncateText(text: string, maxLength: number): string {
   return text.substring(0, maxLength).replace(/\s+\S*$/, '') + '…';
 }
 
-// Category slug mapping for navigation
+// Category slug mapping for navigation. Slugs only — numeric IDs are not
+// stable across CMS instances (the WP Importer reassigns them on import).
 export const MAIN_CATEGORIES = [
-  { name: 'Drinking', slug: 'drinking', id: 6 },
-  { name: 'Dining', slug: 'dining', id: 12 },
-  { name: 'Living', slug: 'living', id: 13 },
+  { name: 'Drinking', slug: 'drinking' },
+  { name: 'Dining', slug: 'dining' },
+  { name: 'Living', slug: 'living' },
 ] as const;
 
 export const NAV_LINKS = [
