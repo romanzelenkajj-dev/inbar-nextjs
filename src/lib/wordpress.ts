@@ -155,12 +155,21 @@ const HIDDEN_AUTHOR_KEYS = new Set([
   'inbar redakcia',
 ]);
 
+// System / admin accounts that should be presented as the editorial brand.
+// Defensive — even if the WP admin profile fields drift, the public site
+// (and JSON-LD consumers) still see a clean editorial name.
+const SYSTEM_AUTHOR_KEYS = new Set(['admin_roman']);
+const EDITORIAL_FALLBACK = 'Redakcia InBar';
+
 export function getAuthorName(post: WPPost): string | null {
   const author = post._embedded?.author?.[0];
   const rawName = author?.name;
   if (!rawName) return null;
   const name = decodeHtmlEntities(rawName).trim();
   const slug = (author?.slug || '').trim();
+  if (SYSTEM_AUTHOR_KEYS.has(slug) || SYSTEM_AUTHOR_KEYS.has(name)) {
+    return EDITORIAL_FALLBACK;
+  }
   if (HIDDEN_AUTHOR_KEYS.has(name.toLowerCase())) return null;
   if (HIDDEN_AUTHOR_KEYS.has(slug.toLowerCase())) return null;
   return name;
