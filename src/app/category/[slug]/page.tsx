@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
       description: category.description || `Články v kategórii ${category.name}`,
       images: [
         {
-          url: `${WP_API_URL}/app/uploads/2020/03/INBAR-LOGO-WEB.png`,
+          url: 'https://inbar.sk/inbar-logo-web.png',
           width: 600,
           height: 200,
           alt: SITE_NAME,

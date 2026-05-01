@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/utils';
-import { WP_API_URL } from '@/lib/wordpress';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieConsent from '@/components/CookieConsent';
 import './globals.css';
 
-const LOGO_URL = `${WP_API_URL}/app/uploads/2020/03/INBAR-LOGO-WEB.png`;
+// Brand asset — must be an absolute URL for OG / JSON-LD consumers
+// (social scrapers, search engines fetch out of context).
+const LOGO_URL = 'https://inbar.sk/inbar-logo-web.png';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
